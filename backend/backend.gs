@@ -24,7 +24,7 @@ function getHarmonogram() {
     const day = daysMap.get(dayShort);
 
     // rowIndex starts at 0, +2 -> one-based indexing and offset by header
-    const lecture = {"id": rowIndex + 2, "title": row[5], "name": row[0], "room": row[2]} 
+    const lecture = {"id": rowIndex + 2, "title": row[5], "name": row[0], "room": row[2], "start_time": startTime, "end_time": endTime} 
 
     if(!lecture.title || !lecture.name || !lecture.room) {
       return;
@@ -54,51 +54,36 @@ function getHarmonogram() {
   return json;
 }
 
-function getLecture(id) {
-  let testId = 2;
-  const row = range[testId - 2];
+function getLectures() {
+  let lectures = {};
 
-  const lecture = {"id": testId, "title": row[5], "name": row[0], "room": row[2], "profile": row[3],"annotation": row[4]} 
+  range.forEach((row, rowIndex) => { 
+    const [ , startTime, , endTime] = row[1].split(" ")
 
-  Logger.log(lecture);
-  return lecture;
+    const lecture = {"id": rowIndex + 2, "title": row[5], "name": row[0], "room": row[2], "profile": row[3],"annotation": row[4], "start_time": startTime, "end_time": endTime}
+    
+    if(!lecture.title || !lecture.name || !lecture.room) {
+      return;
+    }
+
+    lectures[rowIndex + 2] = lecture;
+  });
+  
+  Logger.log(lectures);
+  return lectures;
 }
 
 function doGet(e) {
-  const action = e.parameter.action; // Get ?action= from URL
+  const action = e.queryString; // Get ?getHarmonogram or ?getLectures from URL
   let result;
 
   if (action === "getHarmonogram") {
     result = getHarmonogram();
-  } else if (action === "getLecture") {
-    result = getLecture(e.parameter.id);
+  } else if (action === "getLectures") {
+    result = getLectures();
   }
-  
+
   return ContentService
     .createTextOutput(JSON.stringify(result))
     .setMimeType(ContentService.MimeType.JSON);
 }
- 
-/*{"update_date": new Date().toUTCString(), 
-"days": [
-  {"day": "Pondělí",
-  "times": [
-    {"time": "10:00",
-    // Možná start_time a end_time by bylo praktičtejší?
-    "lectures": [
-      {"id": 5, "title": "Strašně zajímavá přednáška", "name": "Štěpán Hawking", "room": "USV"},
-      {"id": 6, "title": "Méně zajímavá přednáška", "name": "Štěpán Molt", "room": "Aula"},
-      {"id": 7, "title": "Nezajímavá přednáška", "name": "Štěpán Vomáčka", "room": "P2.3"}
-    ]}
-  ]},
-  {"day": "Úterý",
-  "times": [
-    {"time": "10:00",
-    // Možná start_time a end_time by bylo praktičtejší?
-    "lectures": [
-      {"id": 8, "title": "Strašně zajímavá přednáška", "name": "Štěpán Hawking", "room": "USV"},
-      {"id": 9, "title": "Méně zajímavá přednáška", "name": "Štěpán Molt", "room": "Aula"},
-      {"id": 10, "title": "Nezajímavá přednáška", "name": "Štěpán Vomáčka", "room": "P2.3"}
-    ]}
-  ]}
-]}*/
