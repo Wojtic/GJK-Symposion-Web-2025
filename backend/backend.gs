@@ -26,9 +26,9 @@ function getHarmonogram() {
     // rowIndex starts at 0, +2 -> one-based indexing and offset by header
     const lecture = {"id": rowIndex + 2, "title": row[5], "name": row[0], "room": row[2], "start_time": startTime, "end_time": endTime} 
 
-    if(!lecture.title || !lecture.name || !lecture.room) {
+    /*if(!lecture.title || !lecture.name || !lecture.room) {
       return;
-    }
+    }*/
 
     let jsonDay = json.days.find(d => d.day === day);
 
