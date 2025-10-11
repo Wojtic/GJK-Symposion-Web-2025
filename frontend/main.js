@@ -93,6 +93,7 @@ async function fill_harmonogram() {
 
 function showPopup(id) {
   console.log("showPopup", id);
+  document.getElementById("overlay").style.display = "block";
 }
 
 async function cachedFetch(name, url, refresh_time) {
