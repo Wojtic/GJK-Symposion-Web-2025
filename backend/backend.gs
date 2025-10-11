@@ -20,11 +20,19 @@ function getHarmonogram() {
 
   range.forEach((row, rowIndex) => {
 
-    const [dayShort, startTime, , endTime] = row[1].split(" ")
+    const [dayShort, startTime, , endTime] = row[1].split(" ");
     const day = daysMap.get(dayShort);
+    
+    if (day == null || (dayShort == "so" && startTime == "00:00")) {
+      return;
+    }
+    
 
     // rowIndex starts at 0, +2 -> one-based indexing and offset by header
     const lecture = {"id": rowIndex + 2, "title": row[5], "name": row[0], "room": row[2], "start_time": startTime, "end_time": endTime} 
+    if (lecture.name == "-") {
+      lecture.name = "";
+    }
 
     /*if(!lecture.title || !lecture.name || !lecture.room) {
       return;
@@ -77,9 +85,9 @@ function doGet(e) {
   const action = e.queryString; // Get ?getHarmonogram or ?getLectures from URL
   let result;
 
-  if (action === "getHarmonogram") {
+  if (action.includes("getHarmonogram")) {
     result = getHarmonogram();
-  } else if (action === "getLectures") {
+  } else if (action.includes("getLectures")) {
     result = getLectures();
   }
 

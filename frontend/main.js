@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
 async function fill_harmonogram() {
   const getData = async () => {
     const time = new Date().getTime(); // Add it to the URL to prevent caching
-    const url =
-      "https://script.google.com/macros/s/AKfycbwF0k8dqdjimw98DCD9b4eoPZp0-JqroRsCYZBmlxlGtKYm4CivVTrHdi6xe9cfCVGB-g/exec?getHarmonogram";
+    const harmonogramURL =
+      "https://script.google.com/macros/s/AKfycbytnF2N3PpvF4Iny8iwpFc-F532n6PqEQ6WezERjIbKiLIvAzCrFDlHMjRGviJNUCzcFA/exec?getHarmonogram";
+    const url = harmonogramURL + "&t=" + time;
     let data;
     try {
       data = await cachedFetch("harmonogram", url, 180);
@@ -17,7 +18,6 @@ async function fill_harmonogram() {
   };
   const data = await getData();
   const days = data["days"];
-  console.log(days);
 
   days.forEach((day, index) => {
     const container = document.getElementById("harmonogram_days");
