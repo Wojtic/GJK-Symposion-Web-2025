@@ -70,6 +70,8 @@ main {
 #overlay {
     display: none;
 
+    color: white;
+
     position: fixed;
     width: 100vw;
     height: 100vh;

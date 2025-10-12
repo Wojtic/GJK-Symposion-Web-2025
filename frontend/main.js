@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function fill_harmonogram() {
   const getData = async () => {
     const time = new Date().getTime(); // Add it to the URL to prevent caching
-    const harmonogramURL =
-      "https://script.google.com/macros/s/AKfycbytnF2N3PpvF4Iny8iwpFc-F532n6PqEQ6WezERjIbKiLIvAzCrFDlHMjRGviJNUCzcFA/exec?getHarmonogram";
+    const harmonogramURL = "http://localhost:8080/API/harmonogram";
     const url = harmonogramURL + "&t=" + time;
     let data;
     try {
@@ -91,9 +90,36 @@ async function fill_harmonogram() {
   });
 }
 
-function showPopup(id) {
-  console.log("showPopup", id);
+async function showPopup(id) {
+  const getData = async () => {
+    const url = "http://localhost:8080/API/prednaska/" + id;
+    let data;
+    try {
+      data = await cachedFetch("prednaska" + id, url, 180);
+    } catch {
+      console.error("error fetching data");
+    }
+    return data;
+  };
+
+  const data = await getData();
+
+  console.log(data);
+
+  document.getElementById("popup_title").textContent = data.title;
+  document.getElementById("popup_presenter").textContent = data.name;
+  document.getElementById("popup_annotation").textContent = data.annotation;
+  document.getElementById("popup_profile").textContent = data.profile;
+  document.getElementById("popup_room").textContent = data.room;
+  document.getElementById("popup_time").textContent =
+    data.start_time + " - " + data.end_time;
+
   document.getElementById("overlay").style.display = "block";
+  document.getElementById("overlay").onclick = function () {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("jako_text").style.display = "block";
+  };
+  document.getElementById("jako_text").style.display = "none";
 }
 
 async function cachedFetch(name, url, refresh_time) {
