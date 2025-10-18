@@ -21,13 +21,12 @@ window.addEventListener("scroll", (e) => {
   }
 });
 
-window.addEventListener("wheel", (e) => {
+function scrollEvent(delta) {
   const overlay = document.getElementById("overlay");
 
   if (MODE == "FISH") {
     if (window.scrollY > 0) return;
     document.body.style.overflow = "hidden";
-    const delta = e.deltaY;
 
     if (lastScrollY < window.innerHeight) {
       lastScrollY += delta;
@@ -41,7 +40,7 @@ window.addEventListener("wheel", (e) => {
     return;
   }
 
-  lastScrollFish += e.deltaY;
+  lastScrollFish += delta;
   lastScrollFish = Math.min(
     Math.max(0, lastScrollFish),
     window.innerHeight - vlnkyHeight
@@ -52,6 +51,10 @@ window.addEventListener("wheel", (e) => {
     MODE = "FISH";
     setTimeout(enableOverlayFish, 100);
   }
+}
+
+window.addEventListener("wheel", (e) => {
+  scrollEvent(e.deltaY);
 });
 
 function enableOverlayFish() {
@@ -71,6 +74,23 @@ function enableOverlayFish() {
 document.addEventListener("DOMContentLoaded", function () {
   fill_harmonogram();
 });
+
+document.addEventListener("touchmove", touchmove);
+document.addEventListener("touchstart", touchstart);
+
+let startY;
+
+function touchstart(e) {
+  startY = e.touches[0].clientY;
+}
+
+function touchmove(e) {
+  let deltaY = e.touches[0].clientY - startY;
+
+  startY = e.touches[0].clientY;
+
+  scrollEvent(deltaY);
+}
 
 async function fill_harmonogram() {
   const getData = async () => {
