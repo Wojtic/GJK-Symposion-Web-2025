@@ -4,61 +4,78 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-bg-color: #fff1b5;
+    --main-text-color: #1b1b1b;
+    --nav-text-color: #001b4a;
+    --water-color: #00023d;
+    --overlay-text-color: white;
+}
+
+
 body {
-    /*font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;*/
-    background-color: #f4e1a1;
-    color: #1b1b1b;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.anchor {
+    display: block;
+    position: relative;
+    top: calc(-1 * clamp(1rem, calc(4vw + 0.1rem), 4rem) - 1.5em - 2 * min(10px, 1vw));
+    visibility: hidden;
 }
 
 header {
     text-align: center;
     padding: 1em 0;
-    background-color: #f4e1a1;
 }
 
 header img {
-    max-width: 90%;
-    height: auto;
-}
-
-h1 {
-    font-size: 2em;
-    margin: 0.2em 0;
-    color: #1b1b1b;
-}
-
-.subtitle {
-    color: #e2600b;
-    font-weight: bold;
-    margin-top: 0.3em;
-    font-size: 1.2em;
+    width: clamp(0px, 90vw, 60rem);
 }
 
 nav {
+    background-color: var(--main-bg-color);
+    position: sticky;
+    top: calc(-2 * min(10px, 1vw) - 0.5em);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f4e1a1;
-    padding: 0.5em 0;
-}
-
-nav svg {
-    margin-bottom: 0.3rem;
+    padding-top: 0.5em;
 }
 
 nav #links {
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
 nav #links a {
+    flex-grow: 1;
     text-decoration: none;
-    color: #001b4a;
-    font-weight: bold;
-    margin: 0 2em;
-    font-size: 1.2em;
+    color: var(--nav-text-color);
+    font-size: clamp(1rem, calc(4vw + 0.1rem), 4rem);
+    line-height: clamp(1rem, calc(4vw + 0.1rem), 4rem);
+
+    display: inline-block;
+    padding: 0.2em 0.2em 0.1em 0.2em;
+    text-align: center;
+}
+
+.cara {
+    height: min(10px, 1vw);
+    width: 100vw;
+}
+
+
+h1 {
+    font-size: clamp(1.8rem, 7vw + 1rem, 5rem);
+    margin: 0.2em 0;
+}
+
+h2 {
+    font-size: clamp(1em, 1.5em, 5vw);
 }
 
 main {
@@ -67,10 +84,14 @@ main {
     overflow-y: auto;
 }
 
+section {
+    min-height: 100vh;
+}
+
 #overlay {
     display: none;
 
-    color: white;
+    color: var(--overlay-text-color);
 
     position: fixed;
     width: 100vw;
@@ -87,5 +108,5 @@ main {
 #overlay_content {
     margin-top: 0;
     height: 100%;
-    background-color: #00023d;
+    background-color: var(--water-color);
 }
