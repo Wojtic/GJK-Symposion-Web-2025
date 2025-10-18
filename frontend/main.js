@@ -57,6 +57,18 @@ window.addEventListener("wheel", (e) => {
   scrollEvent(e.deltaY);
 });
 
+document.addEventListener("keydown", function (e) {
+  // TODO
+  switch (e.key) {
+    case "ArrowUp":
+      console.log("Top");
+      break;
+    case "ArrowDown":
+      console.log("Down");
+      break;
+  }
+});
+
 function enableOverlayFish() {
   document.getElementById("intro").style.display = "flex";
   document.getElementById("popup").style.display = "none";
