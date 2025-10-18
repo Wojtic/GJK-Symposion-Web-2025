@@ -1,3 +1,73 @@
+let vlnkyHeight = 250;
+let MODE = "FISH"; // FISH or POPUP
+
+let lastScrollY = 0;
+let lastScrollFish = 0;
+
+document.addEventListener("readystatechange", (event) => {
+  if (event.target.readyState === "complete") {
+    vlnkyHeight = document.getElementsByClassName("voda_gif")[0].height;
+    console.log(vlnkyHeight);
+    enableOverlayFish();
+  }
+});
+
+window.addEventListener("scroll", (e) => {
+  if (window.scrollY > 0) {
+    e.preventDefault();
+  } else if (MODE != "FISH") {
+    MODE = "FISH";
+    enableOverlayFish();
+  }
+});
+
+window.addEventListener("wheel", (e) => {
+  const overlay = document.getElementById("overlay");
+
+  if (MODE == "FISH") {
+    if (window.scrollY > 0) return;
+    document.body.style.overflow = "hidden";
+    const delta = e.deltaY;
+
+    if (lastScrollY < window.innerHeight) {
+      lastScrollY += delta;
+      if (lastScrollY >= window.innerHeight - vlnkyHeight) {
+        lastScrollY = Math.max(0, window.innerHeight - vlnkyHeight);
+        document.body.style.overflow = "auto";
+      }
+      lastScrollY = Math.max(0, lastScrollY);
+      overlay.style.top = `${lastScrollY}px`;
+    }
+    return;
+  }
+
+  lastScrollFish += e.deltaY;
+  lastScrollFish = Math.min(
+    Math.max(0, lastScrollFish),
+    window.innerHeight - vlnkyHeight
+  );
+  overlay.style.top = `${lastScrollFish}px`;
+
+  if (lastScrollFish >= window.innerHeight - vlnkyHeight) {
+    MODE = "FISH";
+    setTimeout(enableOverlayFish, 100);
+  }
+});
+
+function enableOverlayFish() {
+  document.getElementById("intro").style.display = "flex";
+  document.getElementById("popup").style.display = "none";
+
+  if (window.scrollY != 0) {
+    document.body.style.overflow = "auto";
+    overlay.style.top = `calc(100vh - ${vlnkyHeight}px)`;
+    lastScrollY = window.innerHeight - vlnkyHeight;
+  } else {
+    document.body.style.overflow = "hidden";
+    overlay.style.top = lastScrollY + "px";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   fill_harmonogram();
 });
@@ -91,6 +161,8 @@ async function fill_harmonogram() {
 }
 
 async function showPopup(id) {
+  MODE = "POPUP";
+
   const getData = async () => {
     const url = "http://localhost:8080/API/prednaska/" + id;
     let data;
@@ -98,13 +170,23 @@ async function showPopup(id) {
       data = await cachedFetch("prednaska" + id, url, 180);
     } catch {
       console.error("error fetching data");
+      data = {
+        title: "Ukázkový název přednášky",
+        name: "Jan Novák",
+        annotation:
+          "Toto je ukázková anotace přednášky. Bude zde popsán obsah přednášky a další informace.",
+        profile:
+          "Jan Novák je zkušený přednášející s mnohaletou praxí v oboru. Specializuje se na zajímavá témata a rád sdílí své znalosti.",
+        room: "Aula",
+        start_time: "10:00",
+        end_time: "11:00",
+      };
     }
     return data;
   };
 
   const data = await getData();
-
-  console.log(data);
+  console.log(id);
 
   document.getElementById("popup_title").textContent = data.title;
   document.getElementById("popup_presenter").textContent = data.name;
@@ -114,12 +196,12 @@ async function showPopup(id) {
   document.getElementById("popup_time").textContent =
     data.start_time + " - " + data.end_time;
 
-  document.getElementById("overlay").style.display = "block";
-  document.getElementById("overlay").onclick = function () {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("jako_text").style.display = "block";
-  };
-  document.getElementById("jako_text").style.display = "none";
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("intro").style.display = "none";
+
+  document.getElementById("overlay").style.top = "0px";
+  lastScrollFish = 0;
+  document.body.style.overflow = "hidden";
 }
 
 async function cachedFetch(name, url, refresh_time) {

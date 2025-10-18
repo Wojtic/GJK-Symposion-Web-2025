@@ -13,62 +13,6 @@
     </header>
 
     <nav>
-      <!-- <svg
-        width="100%"
-        height="7"
-        viewBox="0 0 1000 7"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <filter id="filter" height="2" width="2">
-            <feTurbulence
-              baseFrequency="0.3"
-              numOctaves="2"
-              type="fractalNoise"
-            />
-            <feDisplacementMap
-              scale="50"
-              xChannelSelector="R"
-              in="SourceGraphic"
-            />
-          </filter>
-        </defs>
-        <path
-          d="M0 0 l 1000 7"
-          stroke="black"
-          stroke-width="20"
-          style="filter: url(#filter)"
-        />
-      </svg>
-      <svg
-        width="100%"
-        height="7"
-        viewBox="0 0 1000 7"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <filter id="filter" height="2" width="2">
-            <feTurbulence
-              baseFrequency="0.3"
-              numOctaves="2"
-              type="fractalNoise"
-            />
-            <feDisplacementMap
-              scale="50"
-              xChannelSelector="R"
-              in="SourceGraphic"
-            />
-          </filter>
-        </defs>
-        <path
-          d="M0 0 l 1000 7"
-          stroke="black"
-          stroke-width="20"
-          style="filter: url(#filter)"
-        />
-      </svg>-->
       <img class="cara" src="./media/cara.png" alt="" />
       <img class="cara" src="./media/cara.png" alt="" />
 
@@ -110,7 +54,7 @@
 
       <section id="sec_harmonogram">
         <div class="anchor" id="harmonogram"></div>
-        <h2>Harmonogram</h2>
+        <h2 onclick="showPopup(5)">Harmonogram</h2>
         <p>Podrobný program akce bude doplněn později.</p>
 
         <div id="harmonogram_days"></div>
@@ -135,7 +79,9 @@
     <div id="overlay">
       <img class="voda_gif" src="./media/voda.gif" alt="" width="100%" />
       <div id="overlay_content">
-        <div id="jako_text">Proudy jako...</div>
+        <div id="intro">
+          <div id="jako_text">Proudy jako...</div>
+        </div>
         <div id="popup">
           Tady bude info o přednášce
           <div id="popup_title"></div>

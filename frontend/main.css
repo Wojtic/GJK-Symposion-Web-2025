@@ -12,12 +12,17 @@
     --overlay-text-color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+
+    overflow: hidden;
 }
 
 .anchor {
@@ -89,8 +94,6 @@ section {
 }
 
 #overlay {
-    display: none;
-
     color: var(--overlay-text-color);
 
     position: fixed;
@@ -98,15 +101,26 @@ section {
     height: 100vh;
     top: 0;
     left: 0;
+    transition: top 0.1s;
 }
 
 #overlay .voda_gif {
     margin-bottom: 0;
+    pointer-events: none;
     transform: translateY(10px);
 }
 
 #overlay_content {
     margin-top: 0;
+    padding-top: 10px;
     height: 100%;
     background-color: var(--water-color);
+}
+
+#intro {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
