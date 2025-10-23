@@ -1,5 +1,5 @@
 const TYPE_COUNT = 5;
-const FISH_SPEED = [10, 15, 20, 25, 20];
+const FISH_SPEED = [4, 4, 7, 5, 4];
 const FISH_MASS = [5, 5, 5, 5, 5];
 
 let maxX = 600;
@@ -36,7 +36,7 @@ class Fish {
     size = Math.floor(Math.random() * 50) + 100
   ) {
     this.type = type;
-    this.maxSpeed = FISH_SPEED[type] / 2;
+    this.maxSpeed = FISH_SPEED[type];
     this.maxForce = 0.5;
     this.size = size;
     this.mass = FISH_MASS[type];
@@ -83,8 +83,8 @@ class Fish {
     (this.type = Math.floor(Math.random() * TYPE_COUNT)),
       (this.size = Math.floor(Math.random() * 50) + 100);
 
-    this.maxSpeed = FISH_SPEED[type] / 2;
-    this.mass = FISH_MASS[type];
+    this.maxSpeed = FISH_SPEED[this.type];
+    this.mass = FISH_MASS[this.type];
 
     this.vx = STREAM_VX;
     this.vy = 0;
@@ -103,8 +103,9 @@ class Fish {
   }
 
   setPosition(x, y) {
-    this.element.style.left = x * this.scale - this.size / 2 + "px";
-    this.element.style.top = y * this.scale - this.size / 2 + "px";
+    this.element.style.left =
+      x * this.scale - (this.scale * this.size) / 2 + "px";
+    this.element.style.top = y * this.scale + "px";
   }
 
   applyForce(Fx, Fy) {

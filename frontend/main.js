@@ -1,5 +1,6 @@
 let vlnkyHeight = 250;
-let MODE = "FISH"; // FISH or POPUP
+let MODE = "FISH"; // FISH or POPUP or HIDDEN
+const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
 let lastScrollY = 0;
 let lastScrollFish = 0;
@@ -7,7 +8,6 @@ let lastScrollFish = 0;
 document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
     vlnkyHeight = document.getElementsByClassName("voda_gif")[0].height;
-    console.log(vlnkyHeight);
     enableOverlayFish();
   }
 });
@@ -35,7 +35,11 @@ function scrollEvent(delta) {
         document.body.style.overflow = "auto";
       }
       lastScrollY = Math.max(0, lastScrollY);
-      overlay.style.top = `${lastScrollY}px`;
+      if (isPortrait) {
+        overlay.style.top = `calc(clamp(0px, 90vw, 60rem) * 0.6 +  ${lastScrollY}px)`;
+      } else {
+        overlay.style.top = `${lastScrollY}px`;
+      }
     }
     return;
   }
@@ -79,7 +83,11 @@ function enableOverlayFish() {
     lastScrollY = window.innerHeight - vlnkyHeight;
   } else {
     document.body.style.overflow = "hidden";
-    overlay.style.top = lastScrollY + "px";
+    if (isPortrait) {
+      overlay.style.top = `calc(clamp(0px, 90vw, 60rem) * 0.6) -  ${lastScrollY}px)`;
+    } else {
+      overlay.style.top = lastScrollY + "px";
+    }
   }
 }
 

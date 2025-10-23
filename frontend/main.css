@@ -104,6 +104,16 @@ section {
     transition: top 0.1s;
 }
 
+@media (orientation: portrait) {
+    #overlay {
+        top: calc(clamp(0px, 90vw, 60rem) * 0.6);
+    }
+
+    #fish_container {
+        height: calc(100vh - (clamp(0px, 90vw, 60rem) * 0.6));
+    }
+}
+
 #overlay .voda_gif {
     margin-bottom: 0;
     pointer-events: none;
