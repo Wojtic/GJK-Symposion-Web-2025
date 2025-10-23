@@ -2,11 +2,15 @@ const TYPE_COUNT = 5;
 const FISH_SPEED = [10, 15, 20, 25, 20];
 const FISH_MASS = [5, 5, 5, 5, 5];
 
-const STREAM_VX = 3;
+let maxX = 600;
+const STREAM_VX = 2;
 const allFish = [];
 
 document.addEventListener("DOMContentLoaded", function () {
-  const fishCount = 50;
+  const screenWidth = window.innerWidth;
+  maxX = 600 + ((screenWidth - 375) * (1000 - 600)) / (1920 - 375);
+
+  const fishCount = 30;
   const fishContainer = document.getElementById("fish_container");
   for (let i = 0; i < fishCount; i++) {
     const newFish = new Fish(fishContainer);
@@ -17,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(animate);
     for (let i = 0; i < fishCount; i++) {
       allFish[i].update();
+      if (allFish[i].x > maxX + allFish[i].size) {
+        allFish[i].initLeft();
+      }
     }
   }
   animate();
@@ -26,7 +33,7 @@ class Fish {
   constructor(
     container,
     type = Math.floor(Math.random() * TYPE_COUNT),
-    size = Math.floor(Math.random() * 100) + 150
+    size = Math.floor(Math.random() * 50) + 100
   ) {
     this.type = type;
     this.maxSpeed = FISH_SPEED[type] / 2;
@@ -36,6 +43,9 @@ class Fish {
     this.container = container;
     this.containerWidth = this.container.offsetWidth;
     this.containerHeight = this.container.offsetHeight;
+
+    // Scale it such that x is from 0 to 1500
+    this.scale = this.containerWidth / maxX;
 
     this.x = 0;
     this.y = 0;
@@ -51,7 +61,7 @@ class Fish {
 
     this.element = document.createElement("img");
     this.element.src = `./media/fish/fish${this.type + 1}.gif`;
-    this.element.style.width = this.size + "px";
+    this.element.style.width = this.size * this.scale + "px";
     this.element.classList.add("fish");
 
     this.element.style.transform = this.vx > 0 ? "scaleX(1)" : "scaleX(-1)";
@@ -60,22 +70,41 @@ class Fish {
   }
 
   initRandom() {
-    this.x = Math.random() * this.containerWidth;
-    this.y = Math.random() * this.containerHeight;
+    this.x = Math.random() * maxX;
+    this.y = (Math.random() * this.containerHeight) / this.scale;
 
     this.setPosition(this.x, this.y);
   }
 
   initLeft() {
     this.x = -this.size;
-    this.y = Math.random() * this.containerHeight;
+    this.y = (Math.random() * this.containerHeight) / this.scale;
+
+    (this.type = Math.floor(Math.random() * TYPE_COUNT)),
+      (this.size = Math.floor(Math.random() * 50) + 100);
+
+    this.maxSpeed = FISH_SPEED[type] / 2;
+    this.mass = FISH_MASS[type];
+
+    this.vx = STREAM_VX;
+    this.vy = 0;
+
+    this.Fx = 0;
+    this.Fy = 0;
+
+    this.ax = 0;
+    this.ay = 0;
+    this.element.src = `./media/fish/fish${this.type + 1}.gif`;
+    this.element.style.width = this.size * this.scale + "px";
+
+    this.element.style.transform = this.vx > 0 ? "scaleX(1)" : "scaleX(-1)";
 
     this.setPosition(this.x, this.y);
   }
 
   setPosition(x, y) {
-    this.element.style.left = x - this.size / 2 + "px";
-    this.element.style.top = y - this.size / 2 + "px";
+    this.element.style.left = x * this.scale - this.size / 2 + "px";
+    this.element.style.top = y * this.scale - this.size / 2 + "px";
   }
 
   applyForce(Fx, Fy) {
@@ -96,13 +125,13 @@ class Fish {
     this.faceDirection();
     this.setPosition(this.x, this.y);
 
-    if (this.x > this.containerWidth + this.size) {
+    if (this.x > this.containerWidth / this.scale + this.size / this.scale) {
       this.x = -this.size;
     }
-    if (this.y < 0 || this.y > this.containerHeight) {
+    if (this.y < 0 || this.y > this.containerHeight / this.scale) {
       this.vy = -this.vy;
     }
-    this.y = Math.min(Math.max(0, this.y), this.containerHeight);
+    this.y = Math.min(Math.max(0, this.y), this.containerHeight / this.scale);
 
     this.ax = 0;
     this.ay = 0;
