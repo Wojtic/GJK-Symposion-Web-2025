@@ -6,6 +6,17 @@ let maxX = 600;
 const STREAM_VX = 2;
 const allFish = [];
 
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX * (maxX / window.innerWidth);
+  mouseY =
+    e.clientY -
+    document.getElementById("fish_container").getBoundingClientRect().top;
+  mouseY = mouseY * (maxX / window.innerWidth);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const screenWidth = window.innerWidth;
   maxX = 600 + ((screenWidth - 375) * (1000 - 600)) / (1920 - 375);
@@ -21,7 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(animate);
     for (let i = 0; i < fishCount; i++) {
       allFish[i].update();
-      if (allFish[i].x > maxX + allFish[i].size) {
+      if (
+        allFish[i].x > maxX + allFish[i].size ||
+        allFish[i].x < -allFish[i].size
+      ) {
         allFish[i].initLeft();
       }
     }
@@ -116,6 +130,7 @@ class Fish {
   update() {
     this.flock();
     //this.applyForce(STREAM_VX - this.vx, 0);
+    this.cursor();
 
     this.vx += this.ax;
     this.vy += this.ay;
@@ -148,6 +163,18 @@ class Fish {
     this.applyForce(cohX, cohY);
   }
 
+  cursor() {
+    let mY = mouseY - this.size / 2 / this.scale;
+    let dx = mouseX - this.x;
+    let dy = mY - this.y;
+    const dist = this.length(dx, dy);
+    if (dist < 150 && dist > 20) {
+      let [seekX, seekY] = this.seek(mouseX, mY);
+
+      this.applyForce(seekX * 2, seekY * 2);
+    }
+  }
+
   separate() {
     const desiredseparation = 150;
     let steerX = 0;
@@ -161,10 +188,9 @@ class Fish {
       if (d > 0 && d < desiredseparation) {
         let diffX = this.x - other.x;
         let diffY = this.y - other.y;
-        let diffMag = this.length(diffX, diffY);
 
-        diffX /= diffMag * d;
-        diffY /= diffMag * d;
+        diffX /= d * d;
+        diffY /= d * d;
 
         steerX += diffX;
         steerY += diffY;
