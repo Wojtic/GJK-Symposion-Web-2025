@@ -101,7 +101,7 @@ function touchmove(e) {
 
   startY = e.touches[0].clientY;
 
-  scrollEvent(deltaY);
+  scrollEvent(-deltaY);
 }
 
 async function fill_harmonogram() {
