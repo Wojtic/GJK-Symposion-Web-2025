@@ -127,6 +127,9 @@ section p {
     top: 0;
     left: 0;
     transition: top 0.1s;
+
+    display: flex;
+    flex-direction: column;
 }
 
 @media (orientation: portrait) {
@@ -143,6 +146,7 @@ section p {
     margin-bottom: 0;
     pointer-events: none;
     transform: translateY(10px);
+    transform-origin: bottom;
 }
 
 #overlay_content {

@@ -21,8 +21,21 @@ window.addEventListener("scroll", (e) => {
   }
 });
 
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
 function scrollEvent(delta) {
   const overlay = document.getElementById("overlay");
+
+  if (MODE == "HIDDEN") {
+    if (window.scrollY > 0) return;
+    if (delta < 0) {
+      return enableOverlayFish();
+    }
+    document.body.style.overflow = "auto";
+    return;
+  }
 
   if (MODE == "FISH") {
     if (window.scrollY > 0) return;
@@ -30,6 +43,16 @@ function scrollEvent(delta) {
 
     if (lastScrollY < window.innerHeight) {
       lastScrollY += delta;
+
+      if (isPortrait) {
+        if (
+          clamp(0.9 * window.innerWidth, 0, 600) + lastScrollY >=
+          window.innerHeight * 0.9
+        ) {
+          return hideOverlay();
+        }
+      }
+
       if (lastScrollY >= window.innerHeight - vlnkyHeight) {
         lastScrollY = Math.max(0, window.innerHeight - vlnkyHeight);
         document.body.style.overflow = "auto";
@@ -72,6 +95,24 @@ document.addEventListener("keydown", function (e) {
       break;
   }
 });
+
+function hideOverlay() {
+  const scaleFactor = 0.25;
+
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("fish_container").style.display = "none";
+
+  document.body.style.overflow = "auto";
+  document.getElementById("overlay").style.top =
+    window.innerHeight - vlnkyHeight + "px";
+
+  document.getElementsByClassName(
+    "voda_gif"
+  )[0].style.transform = `scaleY(${scaleFactor})`;
+
+  MODE = "HIDDEN";
+}
 
 function enableOverlayFish() {
   document.getElementById("intro").style.display = "flex";
