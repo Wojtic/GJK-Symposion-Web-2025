@@ -7,6 +7,15 @@ document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
     vlnkyHeight = document.getElementsByClassName("voda_gif")[0].height;
     enableFish();
+
+    document.getElementById("overlay").addEventListener("click", (e) => {
+      if (MODE == "FISH") return hideOverlay();
+      if (MODE == "HIDDEN" && window.scrollY == 0) {
+        scrollPercent = 0.6;
+        document.getElementById("overlay").style.transition = "top 0.5s";
+        return enableFish();
+      }
+    });
   }
 });
 
