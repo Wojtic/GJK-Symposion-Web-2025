@@ -176,3 +176,53 @@ section p {
     position: absolute;
     pointer-events: none;
 }
+
+@media (orientation: portrait) {
+    #jako_text {
+        margin-top: calc(clamp(0px, 20vh, 60rem) * 0.2);
+    }
+
+}
+
+#jako_text table {
+    margin: 0 auto;
+    font-size: clamp(1rem, 4vw + 0.1rem, 3rem);
+    text-align: left;
+    text-transform: uppercase;
+
+    animation: slide 20s linear infinite;
+    animation-delay: -5s;
+}
+
+#jako_text th,
+#jako_text td {
+    padding: 0.2em 0.5em;
+    text-wrap: nowrap;
+}
+
+#jako_text tr :nth-child(1) {
+    width: 40vw;
+    text-align: right;
+}
+
+#jako_text tr :nth-child(3) {
+    width: 40vw;
+    text-align: left;
+}
+
+/* Make the table move from left to right */
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/*
+#jako_text tr :nth-child(odd) {
+    color: var(--main-bg-color);
+}*/
