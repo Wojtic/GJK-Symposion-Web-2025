@@ -1,19 +1,139 @@
 let vlnkyHeight = 250;
 let MODE = "FISH"; // FISH or POPUP or HIDDEN
 const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-let scrollPercent = 0;
+
+let lastScrollY = 0;
+let lastScrollFish = 0;
 
 document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
     vlnkyHeight = document.getElementsByClassName("voda_gif")[0].height;
-    enableFish();
+    enableOverlayFish();
   }
 });
 
-window.addEventListener("scroll", (e) => {});
+window.addEventListener("scroll", (e) => {
+  if (window.scrollY > 0) {
+    e.preventDefault();
+  } else if (MODE != "FISH") {
+    MODE = "FISH";
+    enableOverlayFish();
+  }
+});
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function scrollEvent(delta) {
+  const overlay = document.getElementById("overlay");
+
+  if (MODE == "HIDDEN") {
+    if (window.scrollY > 0) return;
+    if (delta < 0) {
+      return enableOverlayFish();
+    }
+    document.body.style.overflow = "auto";
+    return;
+  }
+
+  if (MODE == "FISH") {
+    if (window.scrollY > 0) return;
+    document.body.style.overflow = "hidden";
+
+    if (lastScrollY < window.innerHeight) {
+      lastScrollY += delta;
+
+      if (isPortrait) {
+        if (
+          clamp(0.9 * window.innerWidth, 0, 600) + lastScrollY >=
+          window.innerHeight * 0.9
+        ) {
+          return hideOverlay();
+        }
+      }
+
+      if (lastScrollY >= window.innerHeight - vlnkyHeight) {
+        lastScrollY = Math.max(0, window.innerHeight - vlnkyHeight);
+        document.body.style.overflow = "auto";
+      }
+      lastScrollY = Math.max(0, lastScrollY);
+      if (isPortrait) {
+        overlay.style.top = `calc(clamp(0px, 90vw, 60rem) * 0.6 +  ${lastScrollY}px)`;
+      } else {
+        overlay.style.top = `${lastScrollY}px`;
+      }
+    }
+    return;
+  }
+
+  lastScrollFish += delta;
+  lastScrollFish = Math.min(
+    Math.max(0, lastScrollFish),
+    window.innerHeight - vlnkyHeight
+  );
+  overlay.style.top = `${lastScrollFish}px`;
+
+  if (lastScrollFish >= window.innerHeight - vlnkyHeight) {
+    MODE = "FISH";
+    setTimeout(enableOverlayFish, 100);
+  }
+}
 
 window.addEventListener("wheel", (e) => {
   scrollEvent(e.deltaY);
+});
+
+document.addEventListener("keydown", function (e) {
+  // TODO
+  switch (e.key) {
+    case "ArrowUp":
+      console.log("Top");
+      break;
+    case "ArrowDown":
+      console.log("Down");
+      break;
+  }
+});
+
+function hideOverlay() {
+  const scaleFactor = 0.25;
+
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("fish_container").style.display = "none";
+
+  document.body.style.overflow = "auto";
+  document.getElementById("overlay").style.top =
+    window.innerHeight - vlnkyHeight + "px";
+
+  document.getElementsByClassName(
+    "voda_gif"
+  )[0].style.transform = `scaleY(${scaleFactor})`;
+
+  MODE = "HIDDEN";
+}
+
+function enableOverlayFish() {
+  document.getElementById("intro").style.display = "flex";
+  document.getElementById("popup").style.display = "none";
+
+  if (window.scrollY != 0) {
+    document.body.style.overflow = "auto";
+    overlay.style.top = `calc(100vh - ${vlnkyHeight}px)`;
+    lastScrollY = window.innerHeight - vlnkyHeight;
+  } else {
+    document.body.style.overflow = "hidden";
+    if (isPortrait) {
+      overlay.style.top = `calc(clamp(0px, 90vw, 60rem) * 0.6) -  ${lastScrollY}px)`;
+    } else {
+      overlay.style.top = lastScrollY + "px";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  fill_harmonogram();
 });
 
 document.addEventListener("touchmove", touchmove);
@@ -31,85 +151,6 @@ function touchmove(e) {
   startY = e.touches[0].clientY;
 
   scrollEvent(-deltaY);
-}
-
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-
-function scrollEvent(delta) {
-  if (MODE == "HIDDEN") {
-    if (window.scrollY > 0) return;
-    if (delta > 0) return;
-    scrollPercent = 0.6;
-    document.getElementById("overlay").style.transition = "top 0.5s";
-    return enableFish();
-  }
-
-  if (MODE == "FISH") {
-    scrollPercent += 0.1 * Math.sign(delta);
-    if (isPortrait && scrollPercent > 0.7) {
-      document.getElementById("o-akci").scrollIntoView({ behavior: "smooth" });
-      return hideOverlay();
-    }
-    if (!isPortrait && scrollPercent > 0.9) {
-      return hideOverlay();
-    }
-    scrollPercent = clamp(scrollPercent, 0, 1);
-    setOverlayTopFish();
-    return;
-  }
-
-  scrollPercent = clamp(scrollPercent, 0, 1);
-}
-
-function setOverlayTopFish() {
-  if (isPortrait) {
-    const top = clamp(0.9 * window.innerWidth, 0, 600) * 0.6;
-    const scrollRange = window.innerHeight - vlnkyHeight - top;
-    return (document.getElementById("overlay").style.top =
-      top + scrollPercent * scrollRange + "px");
-  }
-  document.getElementById("overlay").style.top =
-    (window.innerHeight - vlnkyHeight) * scrollPercent + "px";
-}
-
-function enableFish() {
-  MODE = "FISH";
-  document.body.style.overflow = "hidden";
-
-  document.getElementById("popup").style.display = "none";
-  document.getElementById("intro").style.display = "block";
-  document.getElementById("fish_container").style.display = "block";
-
-  document.getElementsByClassName(
-    "voda_gif"
-  )[0].style.transform = `translateY(10px) scaleY(1)`;
-
-  setOverlayTopFish();
-}
-
-function enablePopup() {}
-
-function hideOverlay() {
-  MODE = "HIDDEN";
-  scrollPercent = 1;
-  const scale = 0.25;
-
-  setTimeout(() => {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("fish_container").style.display = "none";
-  }, 500);
-
-  document.body.style.overflow = "auto";
-
-  document.getElementById("overlay").style.top =
-    window.innerHeight - vlnkyHeight + "px";
-
-  document.getElementsByClassName(
-    "voda_gif"
-  )[0].style.transform = `scaleY(${scale})`;
 }
 
 async function fill_harmonogram() {
@@ -200,17 +241,9 @@ async function fill_harmonogram() {
   });
 }
 
-function showPopup() {
-  MODE = "POPUP";
-  document.getElementById("popup").style.display = "block";
-  document.getElementById("intro").style.display = "none";
-
-  document.getElementById("overlay").style.top = "0px";
-  lastScrollFish = 0;
-  document.body.style.overflow = "hidden";
-}
-
 async function Popup(id) {
+  MODE = "POPUP";
+
   const getData = async () => {
     const url = "http://localhost:8080/API/prednaska/" + id;
     let data;
@@ -244,7 +277,12 @@ async function Popup(id) {
   document.getElementById("popup_time").textContent =
     data.start_time + " - " + data.end_time;
 
-  showPopup();
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("intro").style.display = "none";
+
+  document.getElementById("overlay").style.top = "0px";
+  lastScrollFish = 0;
+  document.body.style.overflow = "hidden";
 }
 
 async function cachedFetch(name, url, refresh_time) {

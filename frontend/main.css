@@ -132,21 +132,12 @@ section p {
     flex-direction: column;
 }
 
-@media (orientation: portrait) {
-    #overlay {
-        top: calc(clamp(0px, 90vw, 60rem) * 0.6);
-    }
-
-    #fish_container {
-        height: calc(100vh - (clamp(0px, 90vw, 60rem) * 0.6));
-    }
-}
-
 #overlay .voda_gif {
     margin-bottom: 0;
     pointer-events: none;
     transform: translateY(10px);
     transform-origin: bottom;
+    transition: transform 0.5s;
 }
 
 #overlay_content {
@@ -214,8 +205,6 @@ section p {
     text-align: left;
 }
 
-/* Make the table move from left to right */
-
 @keyframes slide {
     0% {
         transform: translateX(-100%);
@@ -223,6 +212,16 @@ section p {
 
     100% {
         transform: translateX(100%);
+    }
+}
+
+@media (orientation: portrait) {
+    #overlay {
+        top: calc(clamp(0px, 90vw, 60rem) * 0.6);
+    }
+
+    #fish_container {
+        height: calc(100vh - (clamp(0px, 90vw, 60rem) * 0.6));
     }
 }
 

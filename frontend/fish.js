@@ -130,7 +130,7 @@ class Fish {
   update() {
     this.flock();
     //this.applyForce(STREAM_VX - this.vx, 0);
-    this.cursor();
+    if (!isPortrait) this.cursor();
 
     this.vx += this.ax;
     this.vy += this.ay;
