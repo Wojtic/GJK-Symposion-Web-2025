@@ -54,6 +54,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     padding-top: 0.5em;
+    z-index: 100;
 }
 
 nav #links {
@@ -109,6 +110,16 @@ section {
 
 #sec_kontakty {
     min-height: 100vh;
+}
+
+#kontakty_horizontal {
+    display: flex;
+    gap: 4em;
+}
+
+#kontakty_vertical {
+    display: flex;
+    flex-direction: column;
 }
 
 section p {
@@ -248,6 +259,10 @@ section p {
 #harmonogram_days h3 {
     font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2.5rem);
     margin-bottom: 0.5em;
+}
+
+.day_table {
+    z-index: 10;
 }
 
 #harmonogram_days table {

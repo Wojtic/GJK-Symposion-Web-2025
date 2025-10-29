@@ -129,6 +129,9 @@ function enableFish() {
   )[0].style.transform = `translateY(10px) scaleY(1)`;
 
   setOverlayTopFish();
+  document.querySelectorAll(".day_table").forEach((el) => {
+    el.style.zIndex = "initial";
+  });
 }
 
 function hideOverlay() {
@@ -150,6 +153,10 @@ function hideOverlay() {
   document.getElementsByClassName(
     "voda_gif"
   )[0].style.transform = `scaleY(${scale})`;
+
+  document.querySelectorAll(".day_table").forEach((el) => {
+    el.style.zIndex = "10";
+  });
 }
 
 async function fill_harmonogram() {
@@ -259,6 +266,10 @@ function showPopup() {
   scrollPercent = 0;
   setOverlayTopPopup();
   document.body.style.overflow = "hidden";
+
+  document.querySelectorAll(".day_table").forEach((el) => {
+    el.style.zIndex = "initial";
+  });
 }
 
 async function popup(id) {
