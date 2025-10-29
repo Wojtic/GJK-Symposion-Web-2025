@@ -130,8 +130,9 @@ function enableFish() {
 
   setOverlayTopFish();
   document.querySelectorAll(".day_table").forEach((el) => {
-    el.style.zIndex = "initial";
+    el.style.zIndex = "0";
   });
+  document.getElementById("overlay").style.zIndex = "10";
 }
 
 function hideOverlay() {
@@ -143,6 +144,7 @@ function hideOverlay() {
     document.getElementById("popup").style.display = "none";
     document.getElementById("intro").style.display = "none";
     document.getElementById("fish_container").style.display = "none";
+    document.getElementById("overlay").style.zIndex = "2";
   }, 500);
 
   document.body.style.overflow = "auto";
@@ -155,7 +157,7 @@ function hideOverlay() {
   )[0].style.transform = `scaleY(${scale})`;
 
   document.querySelectorAll(".day_table").forEach((el) => {
-    el.style.zIndex = "10";
+    el.style.zIndex = "4";
   });
 }
 
@@ -270,6 +272,7 @@ function showPopup() {
   document.querySelectorAll(".day_table").forEach((el) => {
     el.style.zIndex = "initial";
   });
+  document.getElementById("overlay").style.zIndex = "10";
 }
 
 async function popup(id) {
