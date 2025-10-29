@@ -301,3 +301,35 @@ section p {
     font-size: x-large;
     width: 4em;
 }
+
+@media screen and (max-width: 900px) {
+    #harmonogram_days tr {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #harmonogram_days td:nth-child(1) {
+        border-bottom: 2px solid var(--main-text-color);
+        margin-top: 2rem;
+    }
+
+
+    #harmonogram_days td {
+        width: 100%;
+    }
+
+
+    #harmonogram_days table tr:first-child {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #kontakty_horizontal {
+        flex-direction: column;
+    }
+}
