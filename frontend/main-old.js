@@ -241,7 +241,7 @@ async function fill_harmonogram() {
   });
 }
 
-async function Popup(id) {
+async function showPopup(id) {
   MODE = "POPUP";
 
   const getData = async () => {

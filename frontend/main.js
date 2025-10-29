@@ -3,20 +3,38 @@ let MODE = "FISH"; // FISH or POPUP or HIDDEN
 const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 let scrollPercent = 0;
 
+var clickStartTime;
+
 document.addEventListener("readystatechange", (event) => {
   if (event.target.readyState === "complete") {
     vlnkyHeight = document.getElementsByClassName("voda_gif")[0].height;
-    enableFish();
+    if (window.scrollY == 0) {
+      enableFish();
+    } else {
+      hideOverlay();
+    }
 
-    document.getElementById("overlay").addEventListener("click", (e) => {
-      if (MODE == "FISH") return hideOverlay();
-      if (MODE == "HIDDEN" && window.scrollY == 0) {
-        scrollPercent = 0.6;
-        document.getElementById("overlay").style.transition = "top 0.5s";
-        return enableFish();
+    document.getElementById("overlay").addEventListener("mousedown", (e) => {
+      clickStartTime = new Date().getTime();
+    });
+
+    document.getElementById("overlay").addEventListener("mouseup", (e) => {
+      let clickDuration = new Date().getTime() - clickStartTime;
+      if (clickDuration < 100) {
+        if (MODE == "FISH") return hideOverlay();
+        if (MODE == "HIDDEN" && window.scrollY == 0) {
+          scrollPercent = 0.6;
+          document.getElementById("overlay").style.transition = "top 0.5s";
+          return enableFish();
+        }
+        if (MODE == "POPUP") return hideOverlay();
       }
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  fill_harmonogram();
 });
 
 window.addEventListener("scroll", (e) => {});
@@ -56,7 +74,9 @@ function scrollEvent(delta) {
   }
 
   if (MODE == "FISH") {
-    scrollPercent += 0.1 * Math.sign(delta);
+    scrollPercent += 0.001 * delta;
+    scrollPercent = clamp(scrollPercent, 0, 1);
+
     if (isPortrait && scrollPercent > 0.7) {
       document.getElementById("o-akci").scrollIntoView({ behavior: "smooth" });
       return hideOverlay();
@@ -65,11 +85,24 @@ function scrollEvent(delta) {
       return hideOverlay();
     }
     scrollPercent = clamp(scrollPercent, 0, 1);
-    setOverlayTopFish();
-    return;
+    if (document.getElementById("fish_container").style.display == "none") {
+      return enableFish();
+    }
+    return setOverlayTopFish();
   }
 
-  scrollPercent = clamp(scrollPercent, 0, 1);
+  if (MODE == "POPUP") {
+    scrollPercent += 0.001 * delta;
+    scrollPercent = clamp(scrollPercent, 0, 1);
+
+    if (
+      (isPortrait && scrollPercent > 0.7) ||
+      (!isPortrait && scrollPercent > 0.9)
+    ) {
+      return hideOverlay();
+    }
+    setOverlayTopPopup();
+  }
 }
 
 function setOverlayTopFish() {
@@ -97,8 +130,6 @@ function enableFish() {
 
   setOverlayTopFish();
 }
-
-function enablePopup() {}
 
 function hideOverlay() {
   MODE = "HIDDEN";
@@ -188,7 +219,8 @@ async function fill_harmonogram() {
       lectures.forEach((lecture) => {
         const cell = document.createElement("td");
         if (lecture.name != "" && lecture.title != "") {
-          cell.setAttribute("onclick", "showPopup(" + lecture.id + ")");
+          cell.setAttribute("onclick", "popup(" + lecture.id + ")");
+          cell.classList.add("clickable");
         }
         const presenter_p = document.createElement("p");
         presenter_p.classList.add("presenter");
@@ -209,17 +241,27 @@ async function fill_harmonogram() {
   });
 }
 
+function setOverlayTopPopup() {
+  const scrollRange = window.innerHeight - vlnkyHeight;
+  document.getElementById("overlay").style.top =
+    scrollPercent * scrollRange + "px";
+  document.getElementsByClassName(
+    "voda_gif"
+  )[0].style.transform = `translateY(10px) scaleY(1)`;
+}
+
 function showPopup() {
   MODE = "POPUP";
   document.getElementById("popup").style.display = "block";
   document.getElementById("intro").style.display = "none";
 
   document.getElementById("overlay").style.top = "0px";
-  lastScrollFish = 0;
+  scrollPercent = 0;
+  setOverlayTopPopup();
   document.body.style.overflow = "hidden";
 }
 
-async function Popup(id) {
+async function popup(id) {
   const getData = async () => {
     const url = "http://localhost:8080/API/prednaska/" + id;
     let data;
@@ -243,7 +285,6 @@ async function Popup(id) {
   };
 
   const data = await getData();
-  console.log(id);
 
   document.getElementById("popup_title").textContent = data.title;
   document.getElementById("popup_presenter").textContent = data.name;

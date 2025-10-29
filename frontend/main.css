@@ -234,3 +234,54 @@ section p {
 #jako_text tr :nth-child(odd) {
     color: var(--main-bg-color);
 }*/
+
+.clickable {
+    cursor: pointer;
+}
+
+#harmonogram_days {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+#harmonogram_days h3 {
+    font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2.5rem);
+    margin-bottom: 0.5em;
+}
+
+#harmonogram_days table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+#harmonogram_days th,
+#harmonogram_days td {
+    text-align: center;
+    vertical-align: top;
+    width: calc((100% - 4em) / 6);
+}
+
+#harmonogram_days p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#harmonogram_days .presenter {
+    font-weight: 600;
+    font-size: larger;
+}
+
+#harmonogram_days .lecture {
+    font-size: medium;
+}
+
+#harmonogram_days th {
+    font-size: x-large;
+}
+
+#harmonogram_days th:nth-child(1),
+#harmonogram_days td:nth-child(1) {
+    font-size: x-large;
+    width: 4em;
+}
