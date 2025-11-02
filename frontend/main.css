@@ -120,6 +120,34 @@ section {
 #kontakty_vertical {
     display: flex;
     flex-direction: column;
+    max-width: 50%;
+}
+
+#map {
+    position: relative;
+    width: 50%;
+    min-height: 20rem;
+}
+
+#map_border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-image-source: url("./media/border.png");
+    border-image-slice: 54 65 65 65;
+    border-image-width: 54px 65px 65px 65px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+iframe {
+    position: absolute;
+    width: calc(100% - 54px);
+    height: calc(100% - 64px);
+    margin: 32px;
+    z-index: 0;
 }
 
 section p {
@@ -347,7 +375,17 @@ section p {
 @media screen and (max-width: 900px) {
     #kontakty_horizontal {
         flex-direction: column;
+        gap: 1rem;
     }
+
+    #kontakty_vertical {
+        max-width: 100% !important;
+    }
+
+    #map {
+        width: min(100%, 30rem);
+    }
+
 }
 
 #popup {
