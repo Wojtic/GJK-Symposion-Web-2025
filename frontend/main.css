@@ -201,9 +201,6 @@ section p {
     font-size: clamp(1rem, 4vw + 0.1rem, 3rem);
     text-align: left;
     text-transform: uppercase;
-
-    animation: slide 20s linear infinite;
-    animation-delay: -5s;
 }
 
 #jako_text th,
