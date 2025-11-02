@@ -236,6 +236,9 @@ async function fill_harmonogram() {
           cell.setAttribute("onclick", "popup(" + lecture.id + ")");
           cell.classList.add("clickable");
         }
+        if (lecture.name == "" && lecture.title == "") {
+          cell.classList.add("empty");
+        }
         const presenter_p = document.createElement("p");
         presenter_p.classList.add("presenter");
         presenter_p.textContent = lecture.name;

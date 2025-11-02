@@ -248,6 +248,7 @@ section p {
     cursor: pointer;
 }
 
+
 #harmonogram_days {
     display: flex;
     flex-direction: column;
@@ -266,6 +267,7 @@ section p {
 #harmonogram_days table {
     width: 100%;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
 #harmonogram_days th,
@@ -275,6 +277,15 @@ section p {
     width: calc((100% - 4em) / 6);
 }
 
+@media screen and (min-width: 901px) {
+
+    #harmonogram_days td:not(:nth-child(1)) {
+        height: 10rem;
+        /*border: dashed 2px var(--water-color);*/
+        padding: 0.5rem;
+    }
+}
+
 #harmonogram_days p {
     text-align: center;
     margin-bottom: 0;
@@ -282,11 +293,11 @@ section p {
 
 #harmonogram_days .presenter {
     font-weight: 600;
-    font-size: larger;
+    font-size: min(1.1rem, 5vw);
 }
 
 #harmonogram_days .lecture {
-    font-size: medium;
+    font-size: min(1.0rem, 4vw);
 }
 
 #harmonogram_days th {
@@ -312,8 +323,16 @@ section p {
     #harmonogram_days td:nth-child(1) {
         border-bottom: 2px solid var(--main-text-color);
         margin-top: 2rem;
+        font-size: min(large, 7vw);
     }
 
+    #harmonogram_days tr:nth-child(2) td:nth-child(1) {
+        margin-top: 0;
+    }
+
+    .empty {
+        display: none;
+    }
 
     #harmonogram_days td {
         width: 100%;
