@@ -333,3 +333,37 @@ section p {
         flex-direction: column;
     }
 }
+#popup {
+    /* text still get outside of the bottom of the screen*/
+    margin-left: clamp(0.25em, 4vw + 0.25em, 1.5em);
+    margin-right: clamp(0.25em, 4vw + 0.25em, 1.5em);
+    text-align: justify;
+    margin-bottom: clamp(0.25rem, 4vw + 0.25em, 0.5em);
+
+}
+
+#popup_title {
+    font-size: clamp(1rem, 3vw + 1rem, 2.5rem);
+    font-weight: 600;
+}
+
+#popup_room {
+    font-size: clamp(1rem, 2.5vw + 0.5rem, 2rem);
+}
+
+#popup_time {
+    font-size: clamp(1rem, 2.5vw + 0.5rem, 2rem);
+}
+
+#popup_presenter {
+    font-size: clamp(1rem, 3vw + 1rem, 2.5rem);
+    font-weight: 600;
+}
+
+#popup_annotation {
+    font-size: clamp(1rem, 2.5vw + 0.5rem, 1.75rem);
+}
+
+#popup_profile { 
+    font-size: clamp(1rem, 2.5vw + 0.5rem, 1.75rem);
+}
