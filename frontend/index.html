@@ -65,8 +65,6 @@
       <section id="sec_harmonogram">
         <div class="anchor" id="harmonogram"></div>
         <h2 onclick="showPopup(5)">Harmonogram</h2>
-        <p>Podrobný program akce bude doplněn později.</p>
-
         <div id="harmonogram_days"></div>
       </section>
 
@@ -132,12 +130,14 @@
           </div>
         </div>
         <div id="popup">
-          <div id="popup_title"></div>
-          <div id="popup_room"></div>
-          <div id="popup_time"></div>
-          <div id="popup_presenter"></div>
-          <div id="popup_annotation"></div>
-          <div id="popup_profile"></div>
+          <h2 id="popup_presenter"></h2>
+          <div id="popup_horizontal">
+            <p id="popup_room"></p>
+            <p id="popup_time"></p>
+          </div>
+          <h3 id="popup_title"></h3>
+          <p id="popup_annotation"></p>
+          <p id="popup_profile"></p>
         </div>
       </div>
     </div>
