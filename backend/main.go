@@ -56,6 +56,7 @@ func handleAPI(w http.ResponseWriter, r *http.Request) {
 func serveLecture(w http.ResponseWriter, r *http.Request, endpoint string) {
 	enableCORS(w, r)
 	w.Header().Set("Content-Type", "application/json")
+	fetch_new := false
 
 	parts := strings.Split(endpoint, "/")
 	var lectureID string
@@ -72,6 +73,10 @@ func serveLecture(w http.ResponseWriter, r *http.Request, endpoint string) {
 	if found && time.Now().Before(item.expireAt) {
 		w.Header().Set("X-Cache", "HIT")
 		data = item.data
+	} else if found {
+		w.Header().Set("X-Cache", "MISS")
+		data = item.data
+		fetch_new = true
 	} else {
 		w.Header().Set("X-Cache", "MISS")
 		data, err = fetchAndCache("prednasky", googleAPIPrednasky)
@@ -83,21 +88,28 @@ func serveLecture(w http.ResponseWriter, r *http.Request, endpoint string) {
 
 	if lectureID == "" {
 		w.Write(data)
-		return
-	}
-
-	var lectures map[string]any
-	if err := json.Unmarshal(data, &lectures); err != nil {
-		http.Error(w, "Invalid JSON from upstream", 500)
-		return
-	}
-
-	if lecture, ok := lectures[lectureID]; ok {
-		resp, _ := json.Marshal(lecture)
-		w.Write(resp)
 	} else {
-		http.Error(w, fmt.Sprintf("Lecture ID %s not found", lectureID), 404)
+		var lectures map[string]any
+		if err := json.Unmarshal(data, &lectures); err != nil {
+			http.Error(w, "Invalid JSON from upstream", 500)
+		} else {
+			if lecture, ok := lectures[lectureID]; ok {
+				resp, _ := json.Marshal(lecture)
+				w.Write(resp)
+			} else {
+				http.Error(w, fmt.Sprintf("Lecture ID %s not found", lectureID), 404)
+			}
+		}
 	}
+
+	if fetch_new {
+		data, err = fetchAndCache("prednasky", googleAPIPrednasky)
+		if err != nil {
+			http.Error(w, "Upstream request failed: "+err.Error(), 502)
+			return
+		}
+	}
+
 }
 
 func serveHarmonogram(w http.ResponseWriter, r *http.Request) {
