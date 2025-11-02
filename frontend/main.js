@@ -118,7 +118,7 @@ function setOverlayTopFish() {
 
 function enableFish() {
   MODE = "FISH";
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
 
   document.getElementById("popup").style.display = "none";
   document.getElementById("intro").style.display = "block";
@@ -147,7 +147,7 @@ function hideOverlay() {
     document.getElementById("overlay").style.zIndex = "2";
   }, 500);
 
-  document.body.style.overflow = "auto";
+  document.body.style.overflowY = "auto";
 
   document.getElementById("overlay").style.top =
     window.innerHeight - vlnkyHeight + "px";
@@ -202,8 +202,8 @@ async function fill_harmonogram() {
     });
 
     function room_sort(a, b) {
-      if (a[0] == "P" && b[0] != "P") return true;
-      else if (a[0] != "P" && b[0] == "P") return false;
+      if (a[0] == "P" && b[0] != "P") return 1;
+      else if (a[0] != "P" && b[0] == "P") return -1;
       return a.localeCompare(b, "cs");
     }
 
@@ -267,7 +267,7 @@ function showPopup() {
   document.getElementById("overlay").style.top = "0px";
   scrollPercent = 0;
   setOverlayTopPopup();
-  document.body.style.overflow = "hidden";
+  document.body.style.overflowY = "hidden";
 
   document.querySelectorAll(".day_table").forEach((el) => {
     el.style.zIndex = "initial";
