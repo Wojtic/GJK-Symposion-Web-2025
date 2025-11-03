@@ -319,8 +319,17 @@ section p {
 
     #harmonogram_days td:not(:nth-child(1)) {
         height: 10rem;
-        /*border: dashed 2px var(--water-color);*/
+        border: dashed 2px var(--water-color);
         padding: 0.5rem;
+    }
+
+    #harmonogram_days td:nth-child(1) {
+        vertical-align: middle;
+    }
+
+    #harmonogram_days th:nth-child(1) {
+        border-right: dashed 2px var(--water-color);
+        border-bottom: dashed 2px var(--water-color);
     }
 }
 
