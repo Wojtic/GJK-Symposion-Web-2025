@@ -74,9 +74,15 @@ nav #links a {
     text-align: center;
 }
 
-.cara {
+nav .cara {
     height: min(10px, 1vw);
     width: 100vw;
+}
+
+section .cara {
+    height: min(10px, 1vw);
+    width: 100%;
+    margin-bottom: 0.5em;
 }
 
 
@@ -92,13 +98,11 @@ main {
 }
 
 section h2 {
-    margin-bottom: 0.5em;
     margin-top: 1rem;
 
     font-size: clamp(1.3rem, 1.35vw + 1rem, 3rem);
 
-    border-bottom: 2px solid var(--main-text-color);
-    padding-bottom: 0.2em;
+    /*border-bottom: 2px solid var(--main-text-color);*/
 }
 
 section {
