@@ -148,6 +148,7 @@ function hideOverlay() {
   const scale = 0.25;
 
   setTimeout(() => {
+    if (scrollPercent < 1) return enableFish();
     document.getElementById("popup").style.display = "none";
     document.getElementById("intro").style.display = "none";
     document.getElementById("fish_container").style.display = "none";
