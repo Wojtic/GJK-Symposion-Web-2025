@@ -98,18 +98,6 @@ function scrollEvent(delta) {
     return setOverlayTopFish();
   }
 
-  if (MODE == "POPUP") {
-    scrollPercent += scrollCoef * delta;
-    scrollPercent = clamp(scrollPercent, 0, 1);
-
-    if (
-      (isPortrait && scrollPercent > 0.7) ||
-      (!isPortrait && scrollPercent > 0.9)
-    ) {
-      return hideOverlay();
-    }
-    setOverlayTopPopup();
-  }
 }
 
 function setOverlayTopFish() {
@@ -268,11 +256,14 @@ function setOverlayTopPopup() {
   document.getElementsByClassName(
     "voda_gif"
   )[0].style.transform = `translateY(10px) scaleY(1)`;
+  const popupHeaderHeight = document.getElementById("popup_header").offsetHeight
+  document.getElementById("popup_content").style.height = "calc("+(window.innerHeight - vlnkyHeight - popupHeaderHeight)+"px - 2rem)"
 }
 
 function showPopup() {
   MODE = "POPUP";
   document.getElementById("popup").style.display = "block";
+  document.getElementById("popup_close").style.display = "flex";
   document.getElementById("intro").style.display = "none";
 
   document.getElementById("overlay").style.top = "0px";
