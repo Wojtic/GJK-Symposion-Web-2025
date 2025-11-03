@@ -157,7 +157,7 @@ function hideOverlay() {
   document.body.style.overflowY = "auto";
 
   document.getElementById("overlay").style.top =
-    window.innerHeight - vlnkyHeight + "px";
+    "calc(100dvh - " + vlnkyHeight + "px)";
 
   document.getElementsByClassName(
     "voda_gif"
