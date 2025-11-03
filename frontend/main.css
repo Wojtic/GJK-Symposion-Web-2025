@@ -126,7 +126,8 @@ section {
 #map {
     position: relative;
     width: 50%;
-    min-height: 20rem;
+    /*min-height: 20rem;*/
+    aspect-ratio: calc(16/9);
 }
 
 #map_border {
@@ -137,16 +138,17 @@ section {
     height: 100%;
     border-image-source: url("./media/border.png");
     border-image-slice: 54 65 65 65;
-    border-image-width: 54px 65px 65px 65px;
+    border-image-width: min(35px, 5vw) min(40px, 6vw);
     z-index: 1;
     pointer-events: none;
 }
 
 iframe {
     position: absolute;
-    width: calc(100% - 54px);
-    height: calc(100% - 64px);
-    margin: 32px;
+    width: calc(100% - calc(0.6 * min(40px, 6vw)));
+    height: calc(100% - calc(0.5 * min(35px, 5vw)));
+    margin-left: calc(0.6 * min(40px, 6vw));
+    margin-top: calc(0.5 * min(35px, 5vw));
     z-index: 0;
 }
 
