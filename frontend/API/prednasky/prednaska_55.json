@@ -1,0 +1,11 @@
+{
+  "_lastUpdated": "2025-11-03T20:20:01+01:00",
+  "annotation": "Hledání ve videích už dávno není jen o ručním přetáčení. Díky pokročilým AI modelům, jako je CLIP od OpenAI, lze propojit text a obraz v jednom vektorovém prostoru – a najít tak ve videu přesně to, co popíšete slovy. Ukážeme si, jak pomocí několika řádků v Pythonu prohledat video podle textového dotazu.",
+  "end_time": "17:50",
+  "id": 55,
+  "name": "Milan Kodíček",
+  "profile": "Prof. RNDr. Milan Kodíček, CSc. vystudoval chemii se specializací na fyzikální chemii na Přírodovědecké fakultě UK. V letech 1971–1991 pracoval na Ústavu hematologie a krevní transfuze, kde studoval konformační chování krevních bílkovin. Roku 1990 habilitoval na VŠCHT Praha, kde vyučuje biochemii, biofyzikální chemii a enzymologii. V roce 2001 byl jmenován profesorem. Založil výzkumnou skupinu zaměřenou na použití hmotnostní spektrometrie pro studium bílkovin. Napsal významné učebnice, například Výkladový slovník biochemických pojmů, Biofysikální chemie a Biochemie – chemický pohled na biologický svět.",
+  "room": "P2.3",
+  "start_time": "16:00",
+  "title": "O bílkovinách jako hlavním proudu biochemickécho chápání světa"
+}

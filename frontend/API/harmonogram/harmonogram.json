@@ -1,0 +1,493 @@
+{
+  "_lastUpdated": "2025-11-03T20:19:58+01:00",
+  "days": [
+    {
+      "day": "Pondělí",
+      "times": [
+        {
+          "lectures": [
+            {
+              "end_time": "11:50",
+              "id": 2,
+              "name": "",
+              "room": "P1.1",
+              "start_time": "10:00",
+              "title": ""
+            },
+            {
+              "end_time": "11:50",
+              "id": 3,
+              "name": "Peter Pöthe",
+              "room": "P2.2",
+              "start_time": "10:00",
+              "title": ""
+            },
+            {
+              "end_time": "11:50",
+              "id": 4,
+              "name": "Debata Rusko",
+              "room": "Aula",
+              "start_time": "10:00",
+              "title": "Ledový proud z východu: O fungování a cílech Putinova Režimu"
+            },
+            {
+              "end_time": "11:50",
+              "id": 5,
+              "name": "Tomáš Halík",
+              "room": "Sborovna",
+              "start_time": "10:00",
+              "title": ""
+            },
+            {
+              "end_time": "11:50",
+              "id": 6,
+              "name": "Vojtěch Pleskot",
+              "room": "USV",
+              "start_time": "10:00",
+              "title": "Proudy částic v laboratoři CERN"
+            },
+            {
+              "end_time": "11:50",
+              "id": 7,
+              "name": "",
+              "room": "P2.3",
+              "start_time": "10:00",
+              "title": ""
+            }
+          ],
+          "time": "10:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "14:50",
+              "id": 8,
+              "name": "Michaela Horáčková Hořejší",
+              "room": "P1.1",
+              "start_time": "13:00",
+              "title": ""
+            },
+            {
+              "end_time": "14:50",
+              "id": 9,
+              "name": "Josef Řídký",
+              "room": "P2.2",
+              "start_time": "13:00",
+              "title": ""
+            },
+            {
+              "end_time": "14:50",
+              "id": 10,
+              "name": "",
+              "room": "Aula",
+              "start_time": "13:00",
+              "title": ""
+            },
+            {
+              "end_time": "14:50",
+              "id": 11,
+              "name": "Václav Walach",
+              "room": "Sborovna",
+              "start_time": "13:00",
+              "title": "Sociálně vyloučené lokality v proudech času"
+            },
+            {
+              "end_time": "14:50",
+              "id": 12,
+              "name": "Jakub Lokoč",
+              "room": "USV",
+              "start_time": "13:00",
+              "title": "Hledání klipu CLIPem"
+            },
+            {
+              "end_time": "14:50",
+              "id": 13,
+              "name": "Anežka Dostálová",
+              "room": "P2.3",
+              "start_time": "13:00",
+              "title": "Proud fotonů: světlo jako zdroj informace a kvantových možností"
+            }
+          ],
+          "time": "13:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "16:50",
+              "id": 14,
+              "name": "Jan Tyl ",
+              "room": "P1.1",
+              "start_time": "15:00",
+              "title": ""
+            },
+            {
+              "end_time": "16:50",
+              "id": 15,
+              "name": "Marek Skarka",
+              "room": "P2.2",
+              "start_time": "15:00",
+              "title": "Hvězdná symfonie"
+            },
+            {
+              "end_time": "16:50",
+              "id": 16,
+              "name": "Debata ekologie",
+              "room": "Aula",
+              "start_time": "15:00",
+              "title": ""
+            },
+            {
+              "end_time": "16:50",
+              "id": 17,
+              "name": "",
+              "room": "Sborovna",
+              "start_time": "15:00",
+              "title": ""
+            },
+            {
+              "end_time": "16:50",
+              "id": 18,
+              "name": "Marek Antoš",
+              "room": "USV",
+              "start_time": "15:00",
+              "title": "Rozvoj, nebo stabilita: Kam dnes proudí volební právo?"
+            },
+            {
+              "end_time": "16:50",
+              "id": 19,
+              "name": "",
+              "room": "P2.3",
+              "start_time": "15:00",
+              "title": ""
+            }
+          ],
+          "time": "15:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "18:50",
+              "id": 20,
+              "name": "Martin Babička",
+              "room": "P1.1",
+              "start_time": "17:00",
+              "title": "Cash flows: ekonomie hlavního proudu jako součást dějin myšlení o přírodě"
+            },
+            {
+              "end_time": "18:50",
+              "id": 21,
+              "name": "Pavel Veselý",
+              "room": "P2.2",
+              "start_time": "17:00",
+              "title": "Proudy velkých dat a jak s nimi naložit"
+            },
+            {
+              "end_time": "18:50",
+              "id": 22,
+              "name": "Radka Reifová",
+              "room": "Aula",
+              "start_time": "17:00",
+              "title": "Proudy v evoluci života"
+            },
+            {
+              "end_time": "18:50",
+              "id": 23,
+              "name": "Hana Kodíčková",
+              "room": "Sborovna",
+              "start_time": "17:00",
+              "title": "Co dělat, když se PROUD života vytrácí? aneb workshop první pomoci"
+            },
+            {
+              "end_time": "18:50",
+              "id": 24,
+              "name": "",
+              "room": "USV",
+              "start_time": "17:00",
+              "title": ""
+            },
+            {
+              "end_time": "18:50",
+              "id": 25,
+              "name": "Petr Koubský",
+              "room": "P2.3",
+              "start_time": "17:00",
+              "title": "Proud a protiproud: věda nemá vyhráno"
+            }
+          ],
+          "time": "17:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "00:00",
+              "id": 26,
+              "name": "",
+              "room": "P1.1",
+              "start_time": "19:30",
+              "title": ""
+            },
+            {
+              "end_time": "00:00",
+              "id": 27,
+              "name": "",
+              "room": "P2.2",
+              "start_time": "19:30",
+              "title": ""
+            },
+            {
+              "end_time": "00:00",
+              "id": 28,
+              "name": "promítání filmu Velký Vlastenecký Výlet + diskuze s producenty",
+              "room": "Aula",
+              "start_time": "19:30",
+              "title": ""
+            },
+            {
+              "end_time": "00:00",
+              "id": 29,
+              "name": "",
+              "room": "Sborovna",
+              "start_time": "19:30",
+              "title": ""
+            },
+            {
+              "end_time": "00:00",
+              "id": 30,
+              "name": "",
+              "room": "USV",
+              "start_time": "19:30",
+              "title": ""
+            },
+            {
+              "end_time": "00:00",
+              "id": 31,
+              "name": "",
+              "room": "P2.3",
+              "start_time": "19:30",
+              "title": ""
+            }
+          ],
+          "time": "19:30"
+        }
+      ]
+    },
+    {
+      "day": "Úterý",
+      "times": [
+        {
+          "lectures": [
+            {
+              "end_time": "10:50",
+              "id": 32,
+              "name": "Miroslav Šobr",
+              "room": "P1.1",
+              "start_time": "09:00",
+              "title": "Cesta vody z horských ledovců do Aralského jezera\n"
+            },
+            {
+              "end_time": "10:50",
+              "id": 33,
+              "name": "Zora Hesová",
+              "room": "P2.2",
+              "start_time": "09:00",
+              "title": ""
+            },
+            {
+              "end_time": "10:50",
+              "id": 34,
+              "name": "Debata o umění ve veřejném prostoru",
+              "room": "Aula",
+              "start_time": "09:00",
+              "title": ""
+            },
+            {
+              "end_time": "10:50",
+              "id": 35,
+              "name": "Jaromír Šindel",
+              "room": "Sborovna",
+              "start_time": "09:00",
+              "title": "Jak proudí ekonomika: měnová politika a její vliv na peníze, úvěry i ekonomiku"
+            },
+            {
+              "end_time": "10:50",
+              "id": 36,
+              "name": "Adéla Gjuričová + Martin Nodl",
+              "room": "USV",
+              "start_time": "09:00",
+              "title": ""
+            },
+            {
+              "end_time": "10:50",
+              "id": 37,
+              "name": "Tomáš Linder ",
+              "room": "P2.3",
+              "start_time": "09:00",
+              "title": ""
+            }
+          ],
+          "time": "09:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "12:50",
+              "id": 38,
+              "name": "Tomáš Skopal",
+              "room": "P1.1",
+              "start_time": "11:00",
+              "title": "Může stroj i člověk doslova „vidět“ do dat? O vizuálních reprezentacích složitých dat pro rychlou datovou analýzu"
+            },
+            {
+              "end_time": "12:50",
+              "id": 39,
+              "name": "Štěpán Valouch",
+              "room": "P2.2",
+              "start_time": "11:00",
+              "title": ""
+            },
+            {
+              "end_time": "12:50",
+              "id": 40,
+              "name": "Jana Ciglerová",
+              "room": "Aula",
+              "start_time": "11:00",
+              "title": ""
+            },
+            {
+              "end_time": "12:50",
+              "id": 41,
+              "name": "Joe Feinberg",
+              "room": "Sborovna",
+              "start_time": "11:00",
+              "title": ""
+            },
+            {
+              "end_time": "12:50",
+              "id": 42,
+              "name": "Hana Blažková",
+              "room": "USV",
+              "start_time": "11:00",
+              "title": ""
+            },
+            {
+              "end_time": "12:50",
+              "id": 43,
+              "name": "Dana Fialová",
+              "room": "P2.3",
+              "start_time": "11:00",
+              "title": ""
+            }
+          ],
+          "time": "11:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "15:50",
+              "id": 44,
+              "name": "Markéta Bidrmanová and host",
+              "room": "P1.1",
+              "start_time": "14:00",
+              "title": ""
+            },
+            {
+              "end_time": "15:50",
+              "id": 45,
+              "name": "",
+              "room": "P2.2",
+              "start_time": "14:00",
+              "title": ""
+            },
+            {
+              "end_time": "15:50",
+              "id": 46,
+              "name": "Ondřej Slačálek",
+              "room": "Aula",
+              "start_time": "14:00",
+              "title": "Nacionalismus bez národů?"
+            },
+            {
+              "end_time": "15:50",
+              "id": 47,
+              "name": "Debata o humanitární pomoci",
+              "room": "Sborovna",
+              "start_time": "14:00",
+              "title": ""
+            },
+            {
+              "end_time": "15:50",
+              "id": 48,
+              "name": "",
+              "room": "USV",
+              "start_time": "14:00",
+              "title": ""
+            },
+            {
+              "end_time": "15:50",
+              "id": 49,
+              "name": "Miloslav Müller",
+              "room": "P2.3",
+              "start_time": "14:00",
+              "title": "Od motýlích křídel po atmosférické řeky"
+            }
+          ],
+          "time": "14:00"
+        },
+        {
+          "lectures": [
+            {
+              "end_time": "17:50",
+              "id": 50,
+              "name": "Ondřej Macl",
+              "room": "P1.1",
+              "start_time": "16:00",
+              "title": ""
+            },
+            {
+              "end_time": "17:50",
+              "id": 51,
+              "name": "Vojtěch Kubelka",
+              "room": "P2.2",
+              "start_time": "16:00",
+              "title": "Migrace zvířat v měnícím se světě - je to lepší s proudem či proti proudu?"
+            },
+            {
+              "end_time": "17:50",
+              "id": 52,
+              "name": "Johana Lomová",
+              "room": "Aula",
+              "start_time": "16:00",
+              "title": "Umělecký průmysl a průmyslové výtvarnictví\nMožnosti uměleckého vzdělávání v proudu společenských změn"
+            },
+            {
+              "end_time": "17:50",
+              "id": 53,
+              "name": "",
+              "room": "Sborovna",
+              "start_time": "16:00",
+              "title": ""
+            },
+            {
+              "end_time": "17:50",
+              "id": 54,
+              "name": "Tomáš Dimter",
+              "room": "USV",
+              "start_time": "16:00",
+              "title": ""
+            },
+            {
+              "end_time": "17:50",
+              "id": 55,
+              "name": "Milan Kodíček",
+              "room": "P2.3",
+              "start_time": "16:00",
+              "title": "O bílkovinách jako hlavním proudu biochemickécho chápání světa"
+            }
+          ],
+          "time": "16:00"
+        }
+      ]
+    }
+  ],
+  "update_date": "Mon, 03 Nov 2025 19:19:57 GMT"
+}
