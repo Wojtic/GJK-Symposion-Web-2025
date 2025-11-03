@@ -78,8 +78,10 @@ function scrollEvent(delta) {
     return enableFish();
   }
 
+  const scrollCoef = isPortrait ? 0.005 : 0.001;
+
   if (MODE == "FISH") {
-    scrollPercent += 0.001 * delta;
+    scrollPercent += scrollCoef * delta;
     scrollPercent = clamp(scrollPercent, 0, 1);
 
     if (isPortrait && scrollPercent > 0.7) {
@@ -97,7 +99,7 @@ function scrollEvent(delta) {
   }
 
   if (MODE == "POPUP") {
-    scrollPercent += 0.001 * delta;
+    scrollPercent += scrollCoef * delta;
     scrollPercent = clamp(scrollPercent, 0, 1);
 
     if (
@@ -159,7 +161,7 @@ function hideOverlay() {
 
   document.getElementsByClassName(
     "voda_gif"
-  )[0].style.transform = `scaleY(${scale})`;
+  )[0].style.transform = `scaleY(${scale}) translateY(10px)`;
 
   document.querySelectorAll(".day_table").forEach((el) => {
     el.style.zIndex = "4";
