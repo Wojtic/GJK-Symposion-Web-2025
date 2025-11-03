@@ -322,8 +322,9 @@ section p {
         padding: 0.5rem;
     }
 
+
     #harmonogram_days td:nth-child(1) {
-        vertical-align: middle;
+        padding-top: 0.5rem;
     }
 
     #harmonogram_days tr:not(:last-child) {
