@@ -171,8 +171,8 @@ function hideOverlay() {
 async function fill_harmonogram() {
   const getData = async () => {
     const time = new Date().getTime(); // Add it to the URL to prevent caching
-    const harmonogramURL = "http://localhost:8080/API/harmonogram";
-    const url = harmonogramURL + "&t=" + time;
+    const harmonogramURL = "./API/harmonogram/harmonogram.json";
+    const url = harmonogramURL; //+ "&t=" + time;
     let data;
     try {
       data = await cachedFetch("harmonogram", url, 180);
@@ -287,7 +287,7 @@ function showPopup() {
 
 async function popup(id) {
   const getData = async () => {
-    const url = "http://localhost:8080/API/prednaska/" + id;
+    const url = "./API/prednasky/prednaska_" + id + ".json";
     let data;
     try {
       data = await cachedFetch("prednaska" + id, url, 180);
