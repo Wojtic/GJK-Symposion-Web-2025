@@ -319,7 +319,6 @@ section p {
 
     #harmonogram_days td:not(:nth-child(1)) {
         height: 10rem;
-        border: dashed 2px var(--water-color);
         padding: 0.5rem;
     }
 
@@ -327,9 +326,20 @@ section p {
         vertical-align: middle;
     }
 
-    #harmonogram_days th:nth-child(1) {
-        border-right: dashed 2px var(--water-color);
+    #harmonogram_days tr:not(:last-child) {
         border-bottom: dashed 2px var(--water-color);
+    }
+
+
+    #harmonogram_days th:not(:nth-child(1)),
+    #harmonogram_days td:not(:nth-child(1)) {
+        border-right: dashed 2px var(--water-color);
+        border-left: dashed 2px var(--water-color);
+    }
+
+    #harmonogram_days th:last-child,
+    #harmonogram_days td:last-child {
+        border-right: none;
     }
 }
 
