@@ -257,7 +257,7 @@ function setOverlayTopPopup() {
     "voda_gif"
   )[0].style.transform = `translateY(10px) scaleY(1)`;
   const popupHeaderHeight = document.getElementById("popup_header").offsetHeight
-  document.getElementById("popup_content").style.height = "calc("+(window.innerHeight - vlnkyHeight - popupHeaderHeight)+"px - 2rem)"
+  document.getElementById("popup_content").style.height = "calc(100dvh - "+(vlnkyHeight + popupHeaderHeight)+"px - 2rem)"
 }
 
 function showPopup() {
