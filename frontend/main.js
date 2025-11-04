@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
   fill_harmonogram();
 });
 
+window.addEventListener('popstate', (e) => {
+	hideOverlay();
+});
+
+
 window.addEventListener("scroll", (e) => {});
 
 window.addEventListener("wheel", (e) => {
