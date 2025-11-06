@@ -448,32 +448,28 @@ section p {
   display: none;
 }
 
+#popup_close::after {
+  position: absolute;
+  top: 2vh;
+  right: 5vw;
+  width: 8vw;
+  max-width: 55px;
+  height: 8vw;
+  max-height: 55px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  border: 2px solid var(--overlay-text-color);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--overlay-text-color);
+  font-size: 1.8rem;
+  content: "\00d7";
+}
+
 @media screen and (max-width: 900px) {
   #popup_content {
     overflow-y: scroll;
-  }
-
-  #popup_close {
-    display: none;
-  }
-
-  #popup_close::after {
-    position: absolute;
-    top: 2vh;
-    right: 5vw;
-    width: 8vw;
-    max-width: 55px;
-    height: 8vw;
-    max-height: 55px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-
-    border: 2px solid var(--overlay-text-color);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--overlay-text-color);
-    font-size: 1.8rem;
-    content: "\00d7";
   }
 }
