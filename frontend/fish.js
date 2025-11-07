@@ -1,5 +1,6 @@
 const TYPE_COUNT = 5;
 const FISH_SPEED = [4, 4, 7, 5, 4];
+const FISH_SIZE = [0.8, 0.9, 1, 0.6, 1.1];
 const FISH_MASS = [5, 5, 5, 5, 5];
 
 let maxX = 600;
@@ -47,12 +48,12 @@ class Fish {
   constructor(
     container,
     type = Math.floor(Math.random() * TYPE_COUNT),
-    size = Math.floor(Math.random() * 50) + 100
+    size = Math.floor(Math.random() * 100) + 50
   ) {
     this.type = type;
     this.maxSpeed = FISH_SPEED[type];
     this.maxForce = 0.5;
-    this.size = size;
+    this.size = size * FISH_SIZE[type];
     this.mass = FISH_MASS[type];
     this.container = container;
     this.containerWidth = this.container.offsetWidth;
@@ -155,10 +156,12 @@ class Fish {
 
   flock() {
     let [sepX, sepY] = this.separate();
+    let [strongSepX, strongSepY] = this.separate(50);
     let [aliX, aliY] = this.align();
     let [cohX, cohY] = this.cohesion();
 
     this.applyForce(sepX * 1.5, sepY * 1.5);
+    this.applyForce(strongSepX * 3, strongSepY * 3);
     this.applyForce(aliX, aliY);
     this.applyForce(cohX, cohY);
   }
@@ -168,15 +171,14 @@ class Fish {
     let dx = mouseX - this.x;
     let dy = mY - this.y;
     const dist = this.length(dx, dy);
-    if (dist < 150 && dist > 20) {
+    if (dist < 150 && dist > 10) {
       let [seekX, seekY] = this.seek(mouseX, mY);
 
       this.applyForce(seekX * 2, seekY * 2);
     }
   }
 
-  separate() {
-    const desiredseparation = 150;
+  separate(desiredseparation = 150) {
     let steerX = 0;
     let steerY = 0;
 

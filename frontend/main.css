@@ -32,9 +32,7 @@ body {
 .anchor {
   display: block;
   position: relative;
-  top: calc(
-    -1 * clamp(1rem, calc(4vw + 0.1rem), 4rem) - 1.5em - 2 * min(10px, 1vw)
-  );
+  top: calc(-1 * clamp(1rem, calc(4vw + 0.1rem), 4rem) - 1.5em - 2 * min(10px, 1vw));
   visibility: hidden;
 }
 
@@ -45,6 +43,11 @@ header {
 
 header img {
   width: clamp(0px, 90vw, 60rem);
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
 }
 
 nav {
@@ -442,16 +445,15 @@ section p {
   font-size: min(1.3rem, 4vw);
   margin-left: auto;
   margin-right: auto;
-}
-
-#popup_close {
   display: none;
 }
 
-#popup_close::after {
+
+#popup_close {
   position: absolute;
   top: 2vh;
   right: 5vw;
+  right: calc((100vw - clamp(0px, 90vw, 70rem))/2);
   width: 8vw;
   max-width: 55px;
   height: 8vw;
@@ -459,17 +461,46 @@ section p {
   justify-content: center;
   align-items: center;
   display: flex;
+  cursor: pointer;
 
-  border: 2px solid var(--overlay-text-color);
-  border-radius: 50%;
   background: transparent;
-  color: var(--overlay-text-color);
   font-size: 1.8rem;
-  content: "\00d7";
+
 }
 
-@media screen and (max-width: 900px) {
-  #popup_content {
-    overflow-y: scroll;
+#popup_close:hover {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+}
+
+
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
   }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+#popup_content {
+  overflow-y: scroll;
 }

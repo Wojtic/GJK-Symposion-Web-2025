@@ -46,7 +46,9 @@ window.addEventListener("popstate", (e) => {
   hideOverlay();
 });
 
-window.addEventListener("scroll", (e) => {});
+window.addEventListener("keydown", (e) => {
+  hideOverlay();
+});
 
 window.addEventListener("wheel", (e) => {
   scrollEvent(e.deltaY);
