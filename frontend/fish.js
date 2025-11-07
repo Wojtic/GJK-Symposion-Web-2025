@@ -95,8 +95,9 @@ class Fish {
     this.x = -this.size;
     this.y = (Math.random() * this.containerHeight) / this.scale;
 
-    (this.type = Math.floor(Math.random() * TYPE_COUNT)),
-      (this.size = Math.floor(Math.random() * 50) + 100);
+    this.type = Math.floor(Math.random() * TYPE_COUNT);
+    this.size = Math.floor(Math.random() * 100) + 50;
+    this.size *= FISH_SIZE[type];
 
     this.maxSpeed = FISH_SPEED[this.type];
     this.mass = FISH_MASS[this.type];

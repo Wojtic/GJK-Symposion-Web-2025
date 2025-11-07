@@ -238,7 +238,8 @@ section p {
 
 #jako_text table {
   margin: 0 auto;
-  font-size: clamp(1rem, 4vw + 0.1rem, 3rem);
+  /*font-size: clamp(1rem, 4vw + 0.1rem, 3rem);*/
+  font-size: clamp(16px, 4vw + 1.6px, 48px);
   text-align: left;
   text-transform: uppercase;
 }
@@ -247,6 +248,7 @@ section p {
 #jako_text td {
   padding: 0.2em 0.5em;
   text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 #jako_text tr :nth-child(1) {
