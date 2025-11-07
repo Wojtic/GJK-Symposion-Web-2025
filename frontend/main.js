@@ -20,7 +20,7 @@ document.addEventListener("readystatechange", (event) => {
 
     document.getElementById("overlay").addEventListener("mouseup", (e) => {
       let clickDuration = new Date().getTime() - clickStartTime;
-      if (clickDuration < 100) {
+      if (clickDuration < 300) {
         if (MODE == "FISH") return hideOverlay();
         if (MODE == "HIDDEN" && window.scrollY == 0) {
           scrollPercent = 0.6;
@@ -42,10 +42,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
   fill_harmonogram();
 });
 
-window.addEventListener('popstate', (e) => {
-	hideOverlay();
+window.addEventListener("popstate", (e) => {
+  hideOverlay();
 });
-
 
 window.addEventListener("scroll", (e) => {});
 
@@ -102,7 +101,6 @@ function scrollEvent(delta) {
     }
     return setOverlayTopFish();
   }
-
 }
 
 function setOverlayTopFish() {
@@ -261,8 +259,10 @@ function setOverlayTopPopup() {
   document.getElementsByClassName(
     "voda_gif"
   )[0].style.transform = `translateY(10px) scaleY(1)`;
-  const popupHeaderHeight = document.getElementById("popup_header").offsetHeight
-  document.getElementById("popup_content").style.height = "calc(100dvh - "+(vlnkyHeight + popupHeaderHeight)+"px - 2rem)"
+  const popupHeaderHeight =
+    document.getElementById("popup_header").offsetHeight;
+  document.getElementById("popup_content").style.height =
+    "calc(100dvh - " + (vlnkyHeight + popupHeaderHeight) + "px - 2rem)";
 }
 
 function showPopup() {
