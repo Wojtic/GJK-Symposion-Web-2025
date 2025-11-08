@@ -117,6 +117,8 @@ function setOverlayTopFish() {
 }
 
 function enableFish() {
+  if (window.scrollY > 0) hideOverlay();
+
   MODE = "FISH";
   document.body.style.overflowY = "hidden";
 
