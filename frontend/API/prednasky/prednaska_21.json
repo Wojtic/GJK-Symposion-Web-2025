@@ -1,10 +1,10 @@
 {
-  "_lastUpdated": "2025-11-03T20:20:01+01:00",
-  "annotation": "anotaci připravujeme",
+  "_lastUpdated": "2025-11-08T22:08:22+01:00",
+  "annotation": "V dnešní době se na internetu každou sekundu objevují kvanta nových dat – příspěvky na sociálních sítích, měření ze senzorů, DNA sekvence, transakce… Jak to všechno vůbec zpracovat, když ani ty největší servery nemají nekonečnou paměť? V přednášce se podíváme na svět proudových (streaming) algoritmů a datových skečů. Ty dokáží vytáhnout užitečné informace z dat, jež přicházejí v rychlém a prakticky nekonečném proudu. Pomocí jednoduchých příkladů z praxe – od hledání trendů na sociálních sítích až po rychlou detekci spamu – si představíme základní myšlenky, které za těmito algoritmy stojí.",
   "end_time": "18:50",
   "id": 21,
   "name": "Pavel Veselý",
-  "profile": "medailonek připravujeme",
+  "profile": "Pavel Veselý působí na Informatickém ústavu Univerzity Karlovy, kde se věnuje výuce a vývoji efektivních algoritmů pro analýzu velkých dat. Zajímají ho proudové algoritmy pro přesné odhady různých statistik, datové struktury pro analýzu DNA sekvencí nebo algoritmy pro publikaci statistik s ochranou soukromí jednotlivců. Během své kariéry též působil na University of Warwick v Anglii, kde pracoval s předními světovými odborníky v oblasti proudových algoritmů. Výsledky jeho práce jsou součástí otevřené softwarové knihovny Apache DataSketches.",
   "room": "P2.2",
   "start_time": "17:00",
   "title": "Proudy velkých dat a jak s nimi naložit"

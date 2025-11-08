@@ -1,5 +1,5 @@
 {
-  "_lastUpdated": "2025-11-03T20:19:58+01:00",
+  "_lastUpdated": "2025-11-08T22:08:20+01:00",
   "days": [
     {
       "day": "Pondělí",
@@ -36,7 +36,7 @@
               "name": "Tomáš Halík",
               "room": "Sborovna",
               "start_time": "10:00",
-              "title": ""
+              "title": "Duchovní proudy naší doby"
             },
             {
               "end_time": "11:50",
@@ -65,7 +65,7 @@
               "name": "Michaela Horáčková Hořejší",
               "room": "P1.1",
               "start_time": "13:00",
-              "title": ""
+              "title": "Kostýmy nejen ve filmu"
             },
             {
               "end_time": "14:50",
@@ -73,7 +73,7 @@
               "name": "Josef Řídký",
               "room": "P2.2",
               "start_time": "13:00",
-              "title": ""
+              "title": "Golfský proud: co k nám proudí přes oceán a jak se z nás stávají Američané"
             },
             {
               "end_time": "14:50",
@@ -118,7 +118,7 @@
               "name": "Jan Tyl ",
               "room": "P1.1",
               "start_time": "15:00",
-              "title": ""
+              "title": "Umělá inteligence jako proud: síla, která mění svět"
             },
             {
               "end_time": "16:50",
@@ -139,10 +139,10 @@
             {
               "end_time": "16:50",
               "id": 17,
-              "name": "",
+              "name": "Hana Kodíčková",
               "room": "Sborovna",
               "start_time": "15:00",
-              "title": ""
+              "title": "Co dělat, když se PROUD života vytrácí? aneb workshop první pomoci"
             },
             {
               "end_time": "16:50",
@@ -192,10 +192,10 @@
             {
               "end_time": "18:50",
               "id": 23,
-              "name": "Hana Kodíčková",
+              "name": "",
               "room": "Sborovna",
               "start_time": "17:00",
-              "title": "Co dělat, když se PROUD života vytrácí? aneb workshop první pomoci"
+              "title": ""
             },
             {
               "end_time": "18:50",
@@ -298,7 +298,7 @@
               "name": "Debata o umění ve veřejném prostoru",
               "room": "Aula",
               "start_time": "09:00",
-              "title": ""
+              "title": "\n"
             },
             {
               "end_time": "10:50",
@@ -319,7 +319,7 @@
             {
               "end_time": "10:50",
               "id": 37,
-              "name": "Tomáš Linder ",
+              "name": "",
               "room": "P2.3",
               "start_time": "09:00",
               "title": ""
@@ -359,7 +359,7 @@
               "name": "Joe Feinberg",
               "room": "Sborovna",
               "start_time": "11:00",
-              "title": ""
+              "title": "Literatura osvobozena od společnosti. O protichůdných proudech „kvalitní“ literatury"
             },
             {
               "end_time": "12:50",
@@ -367,7 +367,7 @@
               "name": "Hana Blažková",
               "room": "USV",
               "start_time": "11:00",
-              "title": ""
+              "title": "Scifistka Eva Hauserová a brakické vody českého feminismu"
             },
             {
               "end_time": "12:50",
@@ -375,7 +375,7 @@
               "name": "Dana Fialová",
               "room": "P2.3",
               "start_time": "11:00",
-              "title": ""
+              "title": "Turismus v proměnách doby"
             }
           ],
           "time": "11:00"
@@ -385,18 +385,18 @@
             {
               "end_time": "15:50",
               "id": 44,
-              "name": "Markéta Bidrmanová and host",
+              "name": "Markéta Bidrmanová a Dominik Stroukal",
               "room": "P1.1",
               "start_time": "14:00",
-              "title": ""
+              "title": "Jak rozproudit peníze"
             },
             {
               "end_time": "15:50",
               "id": 45,
-              "name": "",
+              "name": "Tomáš Lindner ",
               "room": "P2.2",
               "start_time": "14:00",
-              "title": ""
+              "title": "Migrace: různé perspektivy na jedno z nejvýbušnějších témat současnosti\n"
             },
             {
               "end_time": "15:50",
@@ -417,10 +417,10 @@
             {
               "end_time": "15:50",
               "id": 48,
-              "name": "",
+              "name": "Bohumír Janský",
               "room": "USV",
               "start_time": "14:00",
-              "title": ""
+              "title": "Amazonka: čtvrtstoletí od objevu pramenů českými expedicemi"
             },
             {
               "end_time": "15:50",
@@ -441,7 +441,7 @@
               "name": "Ondřej Macl",
               "room": "P1.1",
               "start_time": "16:00",
-              "title": ""
+              "title": "Modrá planeta "
             },
             {
               "end_time": "17:50",
@@ -473,7 +473,7 @@
               "name": "Tomáš Dimter",
               "room": "USV",
               "start_time": "16:00",
-              "title": ""
+              "title": "Kolabující génius: Včely a jejich (špatní) lidé"
             },
             {
               "end_time": "17:50",
@@ -489,5 +489,5 @@
       ]
     }
   ],
-  "update_date": "Mon, 03 Nov 2025 19:19:57 GMT"
+  "update_date": "Sat, 08 Nov 2025 21:08:19 GMT"
 }

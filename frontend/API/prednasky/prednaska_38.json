@@ -1,6 +1,6 @@
 {
-  "_lastUpdated": "2025-11-03T20:20:01+01:00",
-  "annotation": "anotaci připravujeme",
+  "_lastUpdated": "2025-11-08T22:08:22+01:00",
+  "annotation": "Velká data (big data) nejsou velká jen objemem, ale také rozmanitostí (heterogenitou). Datovým analytikům tak nestačí bojovat jen s mohutnými PROUDY datových toků, ale také s PROUDY stále nových rozmanitých datových typů v různých doménách. Porozumění doméně, sémantice a struktuře dat představuje pro datové analytiky základní předpoklad pro datovou analýzu samotnou. K tomuto účelu disponují arzenálem analytických nástrojů a přístupů, které aplikují na parciální problémy analýzy. Potřebují také doménového specialistu. V případě rychlého PROUDU vznikajících a zanikajících datových domén (zvlášť v oblasti big data) je však popsaný tradiční přístup neúměrně pracný a zdlouhavý. V nedávno dokončeném výzkumu jsme vyvinuli metodu pro univerzální vizuální reprezentace původně nevizuálních, zato velmi složitých a rozmanitých dat. V přednášce ukážeme, které vizualizace pro tento účel fungují a jak mohou být použity spolu s generickými předtrénovanými modely strojového učení. Zároveň ukážeme, že tento způsob reprezentace dat může sloužit pro rychlou analytiku a že může sloužit pro interpretaci dat na úrovni jak lidské, tak strojové vizuální kognice. ",
   "end_time": "12:50",
   "id": 38,
   "name": "Tomáš Skopal",
