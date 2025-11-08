@@ -130,6 +130,20 @@ section {
   max-width: 50%;
 }
 
+.socials a {
+  display: inline-block;
+  margin-right: 2rem;
+  transition: all 0.5s ease;
+}
+
+.socials a:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.socials img {
+  width: min(5rem, 14vw);
+}
+
 #map {
   position: relative;
   width: 50%;
