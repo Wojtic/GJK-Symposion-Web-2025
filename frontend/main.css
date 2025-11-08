@@ -234,30 +234,23 @@ section p {
 
 #jako_text {
   font-weight: 600;
-}
-
-#jako_text table {
   margin: 0 auto;
   font-size: clamp(16px, 4vw + 1.6px, 48px);
   text-align: left;
   text-transform: uppercase;
 }
 
-#jako_text th,
-#jako_text td {
+@media (orientation: landscape) {
+  #jako_text {
+    font-size: clamp(calc(100vh * 16/910), calc(4vw + 100vh * 1.6/910), calc(100vh * 48/910));
+  }
+}
+
+#jako_text p {
+  width: 100%;
   padding: 0.2em 0.5em;
   text-wrap: nowrap;
   white-space: nowrap;
-}
-
-#jako_text tr :nth-child(1) {
-  width: 40vw;
-  text-align: right;
-}
-
-#jako_text tr :nth-child(3) {
-  width: 40vw;
-  text-align: left;
 }
 
 @keyframes slide {
@@ -279,11 +272,6 @@ section p {
     height: calc(100vh - (clamp(0px, 90vw, 60rem) * 0.6));
   }
 }
-
-/*
-#jako_text tr :nth-child(odd) {
-    color: var(--main-bg-color);
-}*/
 
 .clickable {
   cursor: pointer;

@@ -34,7 +34,7 @@ document.addEventListener("readystatechange", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  document.querySelectorAll("#jako_text tr").forEach((element, id) => {
+  document.querySelectorAll("#jako_text p").forEach((element, id) => {
     element.style.animation =
       "slide " + Math.floor(Math.random() * 20 + 10) + "s linear infinite";
     element.style.animationDelay = "-" + Math.floor(Math.random() * 30) + "s";
