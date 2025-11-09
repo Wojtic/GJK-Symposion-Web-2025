@@ -70,8 +70,8 @@ nav #links a {
   flex-grow: 1;
   text-decoration: none;
   color: var(--nav-text-color);
-  font-size: clamp(1rem, calc(4vw + 0.1rem), 4rem);
-  line-height: clamp(1rem, calc(4vw + 0.1rem), 4rem);
+  font-size: clamp(1rem, calc(3vw + 0.1rem), 4rem);
+  line-height: clamp(1rem, calc(3vw + 0.1rem), 4rem);
 
   display: inline-block;
   padding: 0.2em 0.2em 0.1em 0.2em;
@@ -115,6 +115,7 @@ section {
   margin-right: auto;
 }
 
+
 #sec_kontakty {
   min-height: 100vh;
 }
@@ -147,7 +148,6 @@ section {
 #map {
   position: relative;
   width: 50%;
-  /*min-height: 20rem;*/
   aspect-ratio: calc(16 / 9);
 }
 
@@ -506,4 +506,34 @@ section p {
 
 #popup_content {
   overflow-y: scroll;
+}
+
+@media screen and (min-width: 1000px) {
+  section {
+    width: calc(clamp(0px, 60vw, 70rem));
+  }
+
+  header img {
+    width: calc(clamp(0px, 60vw, 60rem));
+  }
+
+  section p {
+    font-size: calc(clamp(1rem, 1vw + 0.3rem, 1.3rem));
+  }
+
+  #harmonogram_days .lecture {
+    font-size: calc(clamp(0.8rem, 0.5vw + 0.4rem, 1rem));
+  }
+
+  #harmonogram_days .presenter {
+    font-size: calc(clamp(0.9rem, 0.55vw + 0.44rem, 1rem));
+  }
+
+  #harmonogram_days th,
+  #harmonogram_days th:nth-child(1),
+  #harmonogram_days td:nth-child(1) {
+    font-size: clamp(1.1rem, 1.2vw + 0.3rem, 1.7rem);
+  }
+
+
 }
