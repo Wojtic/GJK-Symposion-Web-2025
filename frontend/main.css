@@ -247,7 +247,8 @@ section p {
 }
 
 #jako_text {
-  font-weight: 600;
+  font-family: "Zalando Sans Expanded", sans-serif;
+  font-weight: 500;
   margin: 0 auto;
   font-size: clamp(16px, 4vw + 1.6px, 48px);
   text-align: left;
