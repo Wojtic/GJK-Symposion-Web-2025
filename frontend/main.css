@@ -32,7 +32,7 @@ body {
 .anchor {
   display: block;
   position: relative;
-  top: calc(-1 * clamp(1rem, calc(4vw + 0.1rem), 4rem) - 1.5em - 2 * min(10px, 1vw));
+  top: calc(-1 * clamp(1rem, calc(3vw + 0.1rem), 4rem) - 1em - 2 * min(10px, 1vw));
   visibility: hidden;
 }
 
@@ -517,7 +517,8 @@ section p {
     width: calc(clamp(0px, 60vw, 60rem));
   }
 
-  section p {
+  section p,
+  #popup {
     font-size: calc(clamp(1rem, 1vw + 0.3rem, 1.3rem));
   }
 
@@ -534,6 +535,5 @@ section p {
   #harmonogram_days td:nth-child(1) {
     font-size: clamp(1.1rem, 1.2vw + 0.3rem, 1.7rem);
   }
-
 
 }
