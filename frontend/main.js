@@ -223,6 +223,20 @@ async function fill_harmonogram() {
     table.appendChild(header_row);
 
     day.times.forEach((time) => {
+      if (time.time == "13:00" || time.time == "14:00") {
+        const row = document.createElement("tr");
+        const time_cell = document.createElement("td");
+        time_cell.textContent = day.day == "Pondělí" ? "12:00" : "13:00";
+        row.appendChild(time_cell);
+        const lunch_cell = document.createElement("td");
+        lunch_cell.setAttribute("colspan", rooms.length);
+        lunch_cell.classList.add("presenter", "lunch");
+        lunch_cell.textContent = "Oběd";
+        row.classList.add("lunch_row");
+        row.appendChild(lunch_cell);
+        table.appendChild(row);
+      }
+
       const row = document.createElement("tr");
       const time_cell = document.createElement("td");
       time_cell.textContent = time.time;
